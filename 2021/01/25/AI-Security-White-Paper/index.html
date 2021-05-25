@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangpengju.word","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="为了应对 AI 技术的安全与隐私泄露威胁，学术界与工业界深入分析攻击原理，并根据不同的攻击原理提出一系列对应的防御技术。这些防御技术覆盖了数据收集、模型训练、模型测试以及系统部署等 AI 应用的生命周期，充分考虑了每个阶段可能引发的安全与隐私泄露威胁，详细分析了现有攻击方法的原理、攻击实施的过程以及产生的影响，并最终提出对应的防御技术。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能安全白皮书">
+<meta property="og:url" content="http://wangpengju.word/2021/01/25/AI-Security-White-Paper/index.html">
+<meta property="og:site_name" content="知行合一">
+<meta property="og:description" content="为了应对 AI 技术的安全与隐私泄露威胁，学术界与工业界深入分析攻击原理，并根据不同的攻击原理提出一系列对应的防御技术。这些防御技术覆盖了数据收集、模型训练、模型测试以及系统部署等 AI 应用的生命周期，充分考虑了每个阶段可能引发的安全与隐私泄露威胁，详细分析了现有攻击方法的原理、攻击实施的过程以及产生的影响，并最终提出对应的防御技术。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wangpengju.word/2021/01/25/AI-Security-White-Paper/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%89%E5%85%A8%E7%99%BD%E7%9A%AE%E4%B9%A6%20b474bc8a8aa64aa8a61583da62a9d0c5/Untitled.png">
+<meta property="og:image" content="http://wangpengju.word/2021/01/25/AI-Security-White-Paper/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%89%E5%85%A8%E7%99%BD%E7%9A%AE%E4%B9%A6%20b474bc8a8aa64aa8a61583da62a9d0c5.png">
+<meta property="article:published_time" content="2021-01-25T10:51:16.000Z">
+<meta property="article:modified_time" content="2021-05-25T11:19:10.712Z">
+<meta property="article:author" content="Joey">
+<meta property="article:tag" content="人工智能">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wangpengju.word/2021/01/25/AI-Security-White-Paper/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%89%E5%85%A8%E7%99%BD%E7%9A%AE%E4%B9%A6%20b474bc8a8aa64aa8a61583da62a9d0c5/Untitled.png">
+
+<link rel="canonical" href="http://wangpengju.word/2021/01/25/AI-Security-White-Paper/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>人工智能安全白皮书 | 知行合一</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">知行合一</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangpengju.word/2021/01/25/AI-Security-White-Paper/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Joey">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="知行合一">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          人工智能安全白皮书
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-25 18:51:16" itemprop="dateCreated datePublished" datetime="2021-01-25T18:51:16+08:00">2021-01-25</time>
+            </span>
+
+          
+            <div class="post-description">为了应对 AI 技术的安全与隐私泄露威胁，学术界与工业界深入分析攻击原理，并根据不同的攻击原理提出一系列对应的防御技术。这些防御技术覆盖了数据收集、模型训练、模型测试以及系统部署等 AI 应用的生命周期，充分考虑了每个阶段可能引发的安全与隐私泄露威胁，详细分析了现有攻击方法的原理、攻击实施的过程以及产生的影响，并最终提出对应的防御技术。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>人工智能技术的崛起依托于三个关键要素：1）深度学习模型在机器学习任务中取得的突破性进展；2）日趋成熟的大数据技术带来的海量数据积累；3）开源学习框架以及计算力提高带来的软硬件基础设施发展。我们在白皮书中将这三个因素简称为 AI 模型、AI数据以及 AI 承载系统。</p>
+<p>人工智能推动社会经济各个领域从数字化、信息化向智能化发展的同时，也面临着严重的安全性威胁。面对人工智能安全性威胁，学术界和工业界 “抓住机遇，迎难而上”，对人工智能安全技术进行了前瞻性研究与布局。研究发现，这些安全性威胁极大程度上破坏了人工智能技术良性发展的生态。</p>
+<p>为了应对 AI 技术的安全与隐私泄露威胁，学术界与工业界深入分析攻击原理，并根据不同的攻击原理提出一系列对应的防御技术。这些防御技术覆盖了数据收集、模型训练、模型测试以及系统部署等 AI 应用的生命周期，充分考虑了每个阶段可能引发的安全与隐私泄露威胁，详细分析了现有攻击方法的原理、攻击实施的过程以及产生的影响，并最终提出对应的防御技术。</p>
+<p>在白皮书中，我们聚焦于 AI 技术中模型、数据与承载系统的安全问题。首先详细介绍 AI 模型、AI 数据与 AI 承载系统面临的安全威胁，然后逐一介绍针对这些威胁的防御技术，最后提出 AI 应用的一站式安全解决方案。下图详细描述了 AI 技术面临的安全威胁与挑战、AI 安全常用防御技术以及 AI 应用系统安全解决方案之间的关系。</p>
+<p><img src="%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%89%E5%85%A8%E7%99%BD%E7%9A%AE%E4%B9%A6%20b474bc8a8aa64aa8a61583da62a9d0c5/Untitled.png" alt="%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%89%E5%85%A8%E7%99%BD%E7%9A%AE%E4%B9%A6%20b474bc8a8aa64aa8a61583da62a9d0c5/Untitled.png"></p>
+<h1 id="AI技术与安全模型"><a href="#AI技术与安全模型" class="headerlink" title="AI技术与安全模型"></a>AI技术与安全模型</h1><p>人工智能是一种通过预先设计好的理论模型模拟人类感知、学习和决策过程的技术。完整的 AI 技术涉及到 AI 模型、训练模型的数据以及运行模型的计算机系统，AI 技术在应用过程中依赖于模型、数据以及承载系统的共同作用。</p>
+<ul>
+<li><strong>AI 模型，</strong>模型是 AI 技术的核心，用于实现 AI 技术的预测、识别等功能，也是 AI 技术不同于其它计算机技术的地方。AI 模型具有数据驱动、自主学习的特点，负责实现机器学习理论和对应算法，能够自动分析输入数据的规律和特征，根据训练反馈自主优化模型参数，最终实现预测输入样本的功能。</li>
+<li><strong>AI 数据，</strong>数据是 AI 技术的核心驱动力，是 AI 模型取得出色性能的重要支撑。AI 模型需要根据种类多样的训练数据，自动学习数据特征，对模型进行优化调整。海量的高质量数据是 AI 模型学习数据特征，取得数据内在联系的基本要求和重要保障。</li>
+<li><strong>AI 承载系统，</strong>应用系统是 AI 技术的根基，AI 技术从模型构建到投入使用所需要的全部计算机基础功能都属于这一部分。一般的 AI 应用部署的流程大致如下：收集应用所需要的大规模数据，使用相关人工智能算法训练模型，将训练完成的模型部署到应用设备上。AI 承载系统为 AI 技术提供重要的运行环境，例如：储存大规模数据需要可靠的数据库技术、训练大型 AI 模型需要巨大的计算机算力、模型算法的具体实现需要 AI 软件框架和第三方工具库提供稳定的接口，数据收集与多方信息交互需要成熟稳定的互联网通信技术。</li>
+</ul>
+<h2 id="AI安全模型"><a href="#AI安全模型" class="headerlink" title="AI安全模型"></a>AI安全模型</h2><p>综合考虑 AI 技术在模型、数据、承载系统上对安全性的要求，我们用保密性、完整性、鲁棒性、隐私性定义 AI 技术的安全模型，如下：</p>
+<ul>
+<li><strong>保密性</strong> (Confidentiality)，要求 AI 技术生命周期内所涉及的数据与模型信息不会泄露给未授权用户。</li>
+<li><strong>完整性</strong> (Integrity)，要求 AI 技术在生命周期中，模型、数据、基础设施和产品不被恶意植入、篡改、替换和伪造。</li>
+<li><strong>鲁棒性</strong> (Robustness)，要求 AI 技术在面对多变复杂的实际应用场景的时候具有较强的稳定性，同时能够抵御复杂的环境条件和非正常的恶意干扰。例如：自动驾驶系统在面对复杂路况时不会产生意外行为，在不同光照和清晰度等环境因素下仍可获得稳定结果。</li>
+<li><strong>隐私性</strong> (Privacy)，要求 AI 技术在正常构建使用的过程中，能够保护数据主体的数据隐私。与保密性有所区别的是，隐私性是 AI 模型需要特别考虑的属性，是指在数据原始信息没有发生直接泄露的情况下，AI 模型计算产生的信息不会间接暴露用户数据。</li>
+</ul>
+<h2 id="AI安全问题分类"><a href="#AI安全问题分类" class="headerlink" title="AI安全问题分类"></a>AI安全问题分类</h2><p>根据 AI 技术涉及的三方面：模型、数据、承载系统，将 AI 安全威胁分为三个大类别，即 AI 模型安全、AI 数据安全与 AI 承载系统安全。</p>
+<ul>
+<li><strong>AI 模型安全性问题</strong>，AI 模型安全是指 AI 模型面临的所有安全威胁，包括 AI 模型在训练与运行阶段遭受到来自攻击者的功能破坏威胁，以及由于 AI 模型自身鲁棒性欠缺所引起的安全威胁。进一步将 AI 模型安全分为三个子类：<ul>
+<li><strong>训练完整性威胁</strong>，攻击者通过对训练数据进行修改，对模型注入隐藏的恶意行为。训练完整性威胁破坏了 AI 模型的完整性，该威胁主要包括传统投毒攻击和后门攻击。</li>
+<li><strong>测试完整性威胁</strong>，攻击者通过对输入的测试样本进行恶意修改，从而达到欺骗 AI 模型的目的，测试完整性威胁主要为对抗样本攻击。</li>
+<li><strong>鲁棒性欠缺威胁</strong>，该问题并非来自于恶意攻击，而是来源于 AI 模型结构复杂、缺乏可解释性，在面对复杂的现实场景时可能会产生不可预计的输出。</li>
+</ul>
+</li>
+<li><strong>AI 数据安全性问题</strong>，数据是 AI 技术的核心驱动力，主要包括模型的参数数据和训练数据。数据安全问题是指 AI 技术所使用的训练、测试数据和模型参数数据被攻击者窃取。针对 AI 技术使用的数据，攻击者可以通过 AI 模型构建和使用过程中产生的信息在一定程度上窃取 AI 模型的数据，主要通过两种方式来进行攻击：<ul>
+<li><strong>基于模型的输出结果</strong>，模型的输出结果隐含着训练/测试数据的相关属性。</li>
+<li><strong>基于模型训练产生的梯度</strong>，该问题主要存在于模型的分布式训练中，多个模型训练方之间交换的模型参数的梯度也可被用于窃取训练数据。</li>
+</ul>
+</li>
+<li><strong>AI 承载系统安全性问题</strong>，承载 AI 技术的应用系统主要包括 AI 技术使用的基础物理设备和软件架构，是 AI 模型中数据收集存储、执行算法、上线运行等所有功能的基础。应用系统所面临的安全威胁与传统的计算机安全威胁相似，会导致 AI 技术出现数据泄露、信息篡改、服务拒绝等安全问题。这些问题可以归纳为两个层面：<ul>
+<li><strong>软件框架层面</strong>，包含主流的 AI 算法模型的工程框架、实现 AI 技术相关算法的开源软件包和第三方库、部署 AI 软件的操作系统，这些软件可能会存在重大的安全漏洞；</li>
+<li><strong>硬件设施层面</strong>，包含数据采集设备、GPU 服务器、端侧设备等，某些基础设备缺乏安全防护容易被攻击者侵入和操纵，进而可被利用施展恶意行为。</li>
+</ul>
+</li>
+</ul>
+<h1 id="AI技术面临的三大威胁"><a href="#AI技术面临的三大威胁" class="headerlink" title="AI技术面临的三大威胁"></a>AI技术面临的三大威胁</h1><h2 id="AI-模型安全性问题"><a href="#AI-模型安全性问题" class="headerlink" title="AI 模型安全性问题"></a>AI 模型安全性问题</h2><h3 id="模型训练完整性威胁"><a href="#模型训练完整性威胁" class="headerlink" title="模型训练完整性威胁"></a>模型训练完整性威胁</h3><p>AI 模型的决策与判断能力来源于对海量数据的训练和学习过程。因此，数据是模型训练过程中一个非常重要的部分，模型训练数据的全面性、无偏性、纯净性很大程度上影响了模型判断的准确率。一般来说，一个全面的、无偏的、纯净的大规模训练数据可以使模型很好地拟合数据集中的信息，学习到近似于人类甚至超越人类的决策与判断能力。</p>
+<p>破坏模型训练完整性的攻击主要为数据投毒攻击和后门攻击：</p>
+<ul>
+<li><strong>数据投毒攻击</strong>，指攻击者通过在模型的训练集中加入少量精心构造的毒化数据，使模型在测试阶段无法正常使用或协助攻击者在没有破坏模型准确率的情况下入侵模型。前者破坏模型的可用性，为无目标攻击；后者破坏模型的完整性，为有目标攻击。破坏完整性的投毒攻击具有很强的隐蔽性：被投毒的模型对干净数据表现出正常的预测能力，只对攻击者选择的目标数据输出错误结果。这种使 AI 模型在特定数据上输出指定错误结果的攻击会导致巨大的危害，在某些关键的场景中会造成严重的安全事故。</li>
+<li><strong>后门攻击</strong>，在这类攻击中，攻击者在模型的正常训练集 Dc = (Xc, Yc) 中加入精心构造的毒化数据集 Dp = (Xp, Yp)，使得毒化后的模型将加入攻击者选定的后门触发器（Backdoor Trigger）的数据分类到攻击者的目标类别 yt，而不影响模型的正常性能。</li>
+</ul>
+<h3 id="测试完整性威胁"><a href="#测试完整性威胁" class="headerlink" title="测试完整性威胁"></a>测试完整性威胁</h3><p>模型测试阶段是指模型训练完成之后，模型参数被全部固定，模型输入测试样本并输出预测结果的过程。在没有任何干扰的情况下，AI 模型的准确率超乎人们的想象，在 ImageNet 图像分类任务中，识别准确率已经超过了人类。</p>
+<p>但是，近年来的研究表明：在模型测试阶段，AI 模型容易受到测试样本的欺骗从而输出不可预计的结果，甚至被攻击者操纵。我们将这类威胁 AI 模型测试阶段正确性的问题定义为测试完整性威胁。破坏模型测试完整性的攻击主要为对抗攻击和伪造攻击：</p>
+<ul>
+<li><strong>对抗攻击</strong>，对抗攻击是指利用对抗样本对模型进行欺骗的恶意行为。对抗样本是指在数据集中通过故意添加细微的干扰所形成的恶意输入样本，在不引起人们注意的情况下，可以轻易导致机器学习模型输出错误预测。</li>
+<li><strong>伪造攻击</strong>，伪造攻击是向生物识别系统提交伪造信息以通过身份验证的一种攻击方式。生物验证技术包括指纹核身、面容核身、声纹核身、眼纹核身、掌纹核身等等。</li>
+</ul>
+<h3 id="模型鲁棒性缺乏"><a href="#模型鲁棒性缺乏" class="headerlink" title="模型鲁棒性缺乏"></a>模型鲁棒性缺乏</h3><p>实际上，以上两种安全威胁暴露出了 AI 模型自身存在的安全隐患。模型鲁棒性要求 AI 模型对于异常和存在微小扰动的输入样本，能够保持输出稳定、准确的预测结果。鲁棒性缺乏主要原因有两类：</p>
+<ul>
+<li><strong>真实环境因素多变</strong>，在真实场景下，AI 模型往往存在鲁棒性不足的问题，投入使用后的准确率不及训练、测试时候良好，甚至会出现一些预料之外的错误结果。这种现象的主要原因是训练数据不够充足，AI 模型难以学习到真实场景中的全部情况。在真实场景下，正常的环境因素变化也会对模型的可靠性产生影响。例如：光照强度、视角角度距离、图像仿射变换、图像分辨率等环境因素会对模型产生不可预测的影响。</li>
+<li><strong>模型可解释性不足</strong>，可解释性是指，在得到模型输出结果的基础上，解释 AI 模型所做决策背后的逻辑以及使人相信其决策准确性的能力。换句话说，就是回答一个“为什么”的问题，即可以解释为什么模型可以通过输入的信息来进行相应的决策。以及在构建 AI 模型的过程中，为什么当前的模型设计可以获得良好的性能。可解释性不足在实际使用中可能会引起很多负面影响：1）模型行为难以预测；2）人们对 AI 技术信任感的缺失；3）AI 算法设计时缺乏理论根据。</li>
+</ul>
+<h3 id="模型偏见威胁"><a href="#模型偏见威胁" class="headerlink" title="模型偏见威胁"></a>模型偏见威胁</h3><p>自 2017 年底以来，AI 模型偏见（AI Bias）就成为学术界及人工智能行业疾呼需要解决的问题。目前学术界谈论较多的 AI 模型偏见有性别歧视、种族歧视等。除了这类偏见，在金融领域也存在 AI 模型偏见，例如：银行信用评分偏见、保费计算偏见、保费赔偿决策偏见等。这些偏见会让 AI 模型做出不适宜的判断结果，对行业和社会造成不小的损失。</p>
+<p>最近有很多关于模型偏见算法的研究，模型偏见来源于有意识或无意识、文化差异、个人因素、人口均等/不同影响以及机会均衡等。通常来说，AI 模型偏见来源于训练数据的偏差，这些偏差可以归类为以下三种:</p>
+<ul>
+<li><strong>心理偏见</strong>（Psychophysical Bias），来源于对刺激所产生的决策偏见。目前，大多数商业 AI 系统使用有监督机器学习，标签用来训练模型、计算模型梯度更新。通常情况下，数据收集人员人工对训练数据打上标签。然而由于人们经常表现出心理偏见，这些心理偏见会影响到训练数据的客观事实。如果 AI 模型被训练出来用于估计这些标签，这种对特定对象不公平的分类将被编码到 AI 模型，最终将导致 AI 模型产生偏见。</li>
+<li><strong>歧视性偏见</strong>（Discriminatory Bias），主要包含对种族、性别等歧视。由于收集数据时候存在歧视性偏见，这将导致使用这些数据训练的 AI 模型可能会继承歧视性偏见。政府和公司在使用包含歧视性偏见的 AI 模型时，实际上对于被检测对象是不公平的。但是，关于 AI 模型的偏见是否违反反歧视法律，则需要进行人工判断或进行外部验证。</li>
+<li><strong>统计偏见</strong>（Statistical Bias），是指训练数据集的分布和实际数据的分布之间存在差异。当训练数据中缺失某些类型的数据，或者训练数据分布不均衡的时候，就会导致训练数据集存在统计偏见。而使用缺失完整性数据集训练出来的 AI 模型，对于存在偏见的测试数据则不能均衡的输出公平的预测结果。在这种情况下，除了增加训练数据的多样性以外，还可以通过修改模型结构、增加数据预处理等方法防止模型过拟合，消除模型中存在的偏见。</li>
+</ul>
+<h2 id="AI-数据与隐私安全性问题"><a href="#AI-数据与隐私安全性问题" class="headerlink" title="AI 数据与隐私安全性问题"></a>AI 数据与隐私安全性问题</h2><p>由于 AI 技术使用过程中产生的模型梯度更新、输出特征向量以及预测结果与输入数据、模型结构息息相关，因此 AI 模型产生的计算信息面临着潜在的隐私数据泄露、模型参数泄露风险。</p>
+<h3 id="基于模型输出的数据泄露"><a href="#基于模型输出的数据泄露" class="headerlink" title="基于模型输出的数据泄露"></a>基于模型输出的数据泄露</h3><p>近些年来研究结果表明，模型的输出结果会隐含一定的数据信息。攻击者可以利用模型输出在一定程度上窃取相关数据，主要可以窃取两类数据信息：1）模型自身的参数数据；2）训练/测试数据。这类攻击包括模型窃取攻击和成员推断攻击等。</p>
+<ul>
+<li>模型窃取攻击(Model Extraction Attack) ，是一类隐私数据窃取攻击，攻击者通过向黑盒模型进行查询获取相应结果，窃取黑盒模型的参数或者对应功能。主要可以分为三类：1) Equation-solving Attack；2) 基于 Meta-model 的模型窃取；3) 基于替代模型的模型窃取。</li>
+<li>成员推断攻击 (Membership-Inference Attack) ，是一种更加容易实现的攻击类型，它是指攻击者将试图推断某个待测样本是否存在于目标模型的训练数据集中，从而获得待测样本的成员关系信息。</li>
+</ul>
+<h3 id="基于梯度更新的数据泄露"><a href="#基于梯度更新的数据泄露" class="headerlink" title="基于梯度更新的数据泄露"></a>基于梯度更新的数据泄露</h3><p><strong>模型梯度更新会导致隐私泄露</strong>。梯度更新的交换往往只出现在分布式模型训练中，拥有不同私有数据的多方主体每一轮仅使用自己的数据来更新模型，随后对模型参数的更新进行聚合，分布式地完成统一模型的训练，在这个过程中，中心服务器和每个参与主体都不会获得其它主体的数据信息。然而即便是在原始数据获得良好保护的情况下，参与主体的私有数据仍存在泄漏的可能性。</p>
+<h2 id="AI-系统安全性问题"><a href="#AI-系统安全性问题" class="headerlink" title="AI 系统安全性问题"></a>AI 系统安全性问题</h2><p>AI 系统安全性问题与传统计算机安全领域中的安全问题相似，威胁着 AI 技术的保密性、完整性和可用性。AI 系统安全问题主要分为两类：1) 硬件设备安全问题，主要指数据采集存储、信息处理、应用运行相关的计算机硬件设备被攻击者攻击破解，例如芯片、存储媒介等；2) 系统与软件安全问题，主要指承载 AI 技术的各类计算机软件中存在的漏洞和缺陷，例如：承载技术的操作系统、软件框架和第三方库等。</p>
+<h3 id="硬件设备安全问题"><a href="#硬件设备安全问题" class="headerlink" title="硬件设备安全问题"></a>硬件设备安全问题</h3><p>硬件设备安全问题指 AI 技术当中使用的基础物理设备被恶意攻击导致的安全问题。物理设备是 AI 技术构建的基础，包含了中心计算设备、数据采集设备等基础设施。攻击者一旦能够直接接触相应的硬件设备，就能够伪造和窃取数据，破坏整个系统的完整性。</p>
+<h3 id="系统与软件安全问题"><a href="#系统与软件安全问题" class="headerlink" title="系统与软件安全问题"></a>系统与软件安全问题</h3><p>系统与软件安全问题是指承载 AI 应用的各类系统软件漏洞导致的安全问题。AI 技术从算法到实现是存在距离的，在算法层面上开发人员更关注如何提升模型本身性能和鲁棒性。然而强健的算法不代表着 AI 应用安全无虞，在 AI 应用过程中同样会面临软件层面的安全漏洞威胁，如果忽略了这些漏洞，则可能会导致关键数据篡改、模型误判、系统崩溃或被劫持控制流等严重后果。</p>
+<p>例如机器学习框架掩盖了 AI 技术实现的底层复杂结构，机器学习框架是建立在众多的基础库和组件之上的，例如 Tensorflow、Caffe、PyTorch 等框架需要依赖 Numpy、libopencv、librosa 等数十个第三方动态库或 Python 模块。这些组件之间存在着复杂的依赖关系。框架中任意一个依赖组件存在的安全漏洞，都会威胁到整个框架以及其所支撑的应用系统。</p>
+<p>研究表明在这些深度学习框架及其依赖库中存在的软件漏洞几乎包含了所有常见的类型，如堆溢出、释放对象后引用、内存访问越界、整数溢出、除零异常等漏洞，这些潜在的危害会导致深度学习应用受到拒绝服务、控制流劫持、数据篡改等恶意攻击的影响。</p>
+<h1 id="AI常用防御技术"><a href="#AI常用防御技术" class="headerlink" title="AI常用防御技术"></a>AI常用防御技术</h1><p>本章节将逐一介绍应对上述 AI 模型、AI 数据以及 AI 承载系统威胁的防御方法，并根据这些防御方法的特点进行相应的分类，总结不同防御方法的主要思想和针对的攻击场景，使得对 AI 安全中的防御技术有初步而全面的了解。</p>
+<p><img src="%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%89%E5%85%A8%E7%99%BD%E7%9A%AE%E4%B9%A6%20b474bc8a8aa64aa8a61583da62a9d0c5.png" alt="%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%89%E5%85%A8%E7%99%BD%E7%9A%AE%E4%B9%A6%20b474bc8a8aa64aa8a61583da62a9d0c5.png"></p>
+<h2 id="AI-模型自身安全性增强"><a href="#AI-模型自身安全性增强" class="headerlink" title="AI 模型自身安全性增强"></a>AI 模型自身安全性增强</h2><p>AI 模型自身在训练与测试阶段遇到的安全威胁，包括投毒攻击、对抗样本攻击和鲁棒性缺乏威胁。为了应对这些威胁，学术界与工业界已经提出了许多有效的防御方法。这些防御方法从模型自身性质出发，针对性地增强了模型自身在真实场景下的鲁棒性。</p>
+<h3 id="面向训练数据的防御"><a href="#面向训练数据的防御" class="headerlink" title="面向训练数据的防御"></a>面向训练数据的防御</h3><p>面向训练数据的防御试图保护模型在使用不信任来源的数据训练后，不受到后门攻击的影响。采用的防御方法包括：频谱分析法、激活值聚类法和强扰动输入法等。</p>
+<h3 id="面向模型的防御"><a href="#面向模型的防御" class="headerlink" title="面向模型的防御"></a>面向模型的防御</h3><p>面向模型的防御试图检测模型中是否含有后门，若含有则将后门消除。采用的防御方法包括：网络裁剪法、后门逆向法和模式连通法等。</p>
+<h3 id="对抗训练"><a href="#对抗训练" class="headerlink" title="对抗训练"></a>对抗训练</h3><p>对抗训练 (Adversarial Training) 是针对对抗攻击的最为直观防御方法，它使用对抗样本和良性样本同时作为训练数据对神经网络进行对抗训练，训练获得的 AI 模型可以主动防御对抗攻击。采用的防御方法包括：FGSM对抗训练、PGD对抗训练、集成对抗训练、Logits对抗训练和生成对抗训练等。</p>
+<h3 id="输入预处理防御"><a href="#输入预处理防御" class="headerlink" title="输入预处理防御"></a>输入预处理防御</h3><p>基于输入预处理的对抗防御方法通过对输入数据进行恰当的预处理，消除输入数据中存在的对抗性扰动。预处理后的输入数据将代替原输入样本输入网络进行分类，使模型获得正确的分类结果。输入预处理防御是一种简单有效的防御方法，它可以很容易地集成到已有的 AI 系统中。例如：图片分类系统中的预处理模块与分类模型通常是解耦的，因此很容易将输入预处理防御方法集成到预处理模块中。</p>
+<p>一类数据预处理方法使用 JPEG 压缩、滤波、图像模糊、分辨率调整等方来对输入图像进行预处理。另一类输入预处理技术依赖于输入清理 (Input Cleansing) 技术。与传统的基于输入变换的输入预处理技术不同，输入清理利用机器学习算法学习良性样本的数据分布，利用良性样本的数据分布精准地去除输入输入样本中的对抗性扰动。</p>
+<p>基于输入预处理的防御把防御的重点放在样本输入网络之前，通过输入变换或输入清理技术消除了对抗样本中的对抗性扰动，处理后的样本对模型的攻击性将大幅减弱。输入预处理防御可以有效地防御黑盒和灰盒攻击，然而对于在算法和模型全部暴露给攻击者的白盒攻击设置下，这些算法并不能保证良好的防御性能。</p>
+<h3 id="特异性防御算法"><a href="#特异性防御算法" class="headerlink" title="特异性防御算法"></a>特异性防御算法</h3><p>除了对抗训练和输入预处理，很多工作通过优化深度学习模型的结构或算法来防御对抗攻击，我们将其称之为特异性防御算法。近年来，越来越多的启发式特异性对抗防御算法被提出，我们选取其中一些具有代表性的算法归纳如下：1）蒸馏算法被证明可以一定程度提高深度学习模型的鲁棒性；2）对深度学习网络进行特征修剪可以有效地防御传统的对抗攻击手段；3）向深度学习网络中加入随机化操作可以有效防御黑盒模型下的对抗攻击。</p>
+<h3 id="鲁棒性增强"><a href="#鲁棒性增强" class="headerlink" title="鲁棒性增强"></a>鲁棒性增强</h3><p>鲁棒性增强是指在复杂的真实场景下，增强 AI 模型面对环境干扰以及多样输入时的稳健性。目前，AI 模型仍然缺乏鲁棒性，当处于复杂恶劣的环境条件或面对非正常输入时，性能会出现一定的损失，做出的不尽人意的决策。鲁棒性增强就是为了使模型在上述情况下依然能够维持其性能水平，减少意外的决策失误，可靠地履行其功能。构建高鲁棒性的 AI 模型不仅有助于提升模型在实际使用过程中的可靠性，同时能够从根本上完善模型攻防机理的理论研究，是 AI 模型安全研究中重要的一部分。为了增强模型的鲁棒性，可以从数据增强和可解释性增强两个方面进行深入探索。</p>
+<h3 id="可解释性增强"><a href="#可解释性增强" class="headerlink" title="可解释性增强"></a>可解释性增强</h3><p>可解释性增强一方面从机器学习理论的角度出发，在模型的训练阶段，通过选取或设计本身具有可解释性的模型，为模型提高性能、增强泛化能力和鲁棒性保驾护航；另一方面要求研究人员能够解释模型有效性，即在不改变模型本身的情况下探索模型是如何根据样本输入进行决策的。针对模型可解释性增强，目前国内外研究主要分为两种类型：集成解释（Integrated Interpretability）和后期解释 (Post Hoc Interpretability)。</p>
+<h2 id="AI-数据安全与隐私泄漏防御"><a href="#AI-数据安全与隐私泄漏防御" class="headerlink" title="AI 数据安全与隐私泄漏防御"></a>AI 数据安全与隐私泄漏防御</h2><h3 id="模型结构防御"><a href="#模型结构防御" class="headerlink" title="模型结构防御"></a>模型结构防御</h3><p>面向模型的防御是通过对模型结构做适当的修改，减少模型泄露的信息，或者降低模型的过拟合程度，从而完成对模型泄露和数据泄露的保护。面向模型的防御旨在修改模型的结构和损失函数，使目标模型给出的输出向量中包含尽可能少的信息，从而取得较好的防御效果。但这种防御方式仍有缺陷，它会对目标模型的性能有较大影响，导致其分类准确度出现波动。因此，防御方需要在模型的性能与其鲁棒性之间做出平衡。</p>
+<h3 id="信息混淆防御"><a href="#信息混淆防御" class="headerlink" title="信息混淆防御"></a>信息混淆防御</h3><p>面向数据的防御是指对模型的预测结果做模糊操作。通过这些模糊操作，在保证 AI 模型输出结果正确性的前提下，尽可能地干扰输出结果中包含的有效信息，从而减少隐私信息的泄露。这些数据模糊操作主要包含两类：一类是截断混淆，即对模型返回的结果向量做取整操作，抹除小数点某位之后的信息；另一类是噪声混淆，即对输出的概率向量中添加微小的噪声，从而干扰准确的信息。</p>
+<h3 id="查询控制防御"><a href="#查询控制防御" class="headerlink" title="查询控制防御"></a>查询控制防御</h3><p>查询控制防御是指防御方可以根据用户的查询行为进行特征提取，完成对隐私泄露攻击的防御。攻击者如果想要执行隐私泄露攻击，需要对目标模型发起大量的查询行为，甚至需要对自己的输入向量进行特定的修饰，从而加快隐私泄露攻击的实施。根据用户查询行为的特征，我们可以分辨出哪些用户是攻击者，进而对攻击者的查询行为进行限制或拒绝服务，以达到防御攻击的目的。查询控制防御主要包含两类：异常样本检测和查询行为检测。</p>
+<h2 id="AI-系统安全性防御"><a href="#AI-系统安全性防御" class="headerlink" title="AI 系统安全性防御"></a>AI 系统安全性防御</h2><p>除了模型算法层面的威胁，AI 系统同样面临着来自硬件 与软件层面上的安全问题。这些问题与传统计算机安全领域中的安全问题相似，威胁着 AI 技术的保密性、完整性和可用性。为了保障 AI 技术能够安全稳定地落地应用，其硬件与软件安全同样不容忽视。目前研究者结合传统计算机安全保障技术，对 AI 系统的安全构建做出了许多实践探索。</p>
+<h3 id="硬件安全保护"><a href="#硬件安全保护" class="headerlink" title="硬件安全保护"></a>硬件安全保护</h3><ul>
+<li><strong>设备加密</strong>，设备进行加密可以保障被加密的内部数据不被泄露。例如：华为手机在使用 AI 技术进行身份认证时，对于生物核身等隐私敏感数据，会通过安全通道将这些数据放入一个可信环境的安全隔离区中进行处理。从信息的采集、特征提取、特征比对到特征存储，这些敏感数据不会离开安全隔离区，外部也就无法获取内置安全芯片内的数据，这样确保了敏感数据不会泄露。</li>
+<li><strong>设备检测</strong>，对 AI 应用过程中使用的设备进行必要的检测，确保其不会被攻击者破坏劫持。这些设备包括手机、传感器等数据采集设备，以及服务器等计算资源设备。例如：某些特定的用户设备易于被恶意攻击者劫持，上传到服务器的数据是恶意篡改的数据。因此，防御方需要定期对 AI 应用中涉及的基础设施进行检查，拒绝为高风险设备持有者提供相关的服务，对重要设施实行严格的安全监管措施，避免其从物理层面和软件层面被攻击者劫持。</li>
+</ul>
+<h3 id="系统软件安全保护"><a href="#系统软件安全保护" class="headerlink" title="系统软件安全保护"></a>系统软件安全保护</h3><ul>
+<li><strong>开源框架与及软件</strong>，AI 应用的开发人员在使用开源框架以及软件的时候，应该详细阅读官方文档，严格遵守相应 API 的使用规范；在调用依赖包的时候，应对其版本与更新进行较为全面的了解，避免版本分歧细节导致的功能错误甚至程序崩溃；应该了解软件底层原理，避免在编写 AI 应用时造成算法范畴外的错误，增强代码的可扩展性可鲁棒性，保证 AI 应用安全。</li>
+<li><strong>权限分级管理</strong>，设置多级安全架构。对于各级使用人员进行严格的权限分级管理，根据职责授权，遵守数据可用不可见、任务与数据分离、授权进入的规章制度，保证执行授权边界清晰，保证系统安全；对于核心的模型数据进行加密，保证模型数据只能被可信任的程序访问调用。</li>
+<li><strong>操作行为可溯源</strong>，对于核心数据的活动，进行持续可追溯的管控措施，其生命周期内的操作要保留记录，生成记录事实和支持决策的审计跟踪、系统日志等；同时对于整个系统也要配备安全记录模块，将数据采集、输入样本、运行状态、系统输出等信息写入日志，方便在出现问题的时候回溯诊断追责。</li>
+</ul>
+<h1 id="AI-应用系统一站式安全解决方案"><a href="#AI-应用系统一站式安全解决方案" class="headerlink" title="AI 应用系统一站式安全解决方案"></a>AI 应用系统一站式安全解决方案</h1><p>AI 技术已经是许多业务系统的核心驱动力，如苹果 Siri、微软小冰都依赖智能语音识别模型，谷歌照片利用图像识别技术快速识别图像中的人、动物、风景和地点。然而新技术必然会带来新的安全问题， 一方面是其自身的脆弱性会导致新技术系统不稳定或者不安全的情况，这是新技术的内在安全问题，一方面是新技术会给其他领域带来新的问题，导致其他领域不安全，这是新技术的衍生安全问题。近年来学术界和工业界针对 AI 应用系统的攻击案例此起彼伏，例如腾讯攻破了特斯拉的自动驾驶系统、百度攻破了公有云上的图像识别系统、Facebook 和 Google 掀起了反 DeepFake 浪潮。</p>
+<h2 id="公司介绍"><a href="#公司介绍" class="headerlink" title="公司介绍"></a>公司介绍</h2><ul>
+<li><strong>百度</strong>，百度是国内最早研究 AI 模型安全性问题的公司之一。当前百度建立了一套可衡量深度神经网络在物理世界中鲁棒性的标准化框架。事实上，物理世界中使用的模型往往与人们的衣食住行相关（如无人自动驾驶、医疗自动诊断等），这些模型一旦出现问题，后果将非常严重。因此，该框架首先基于现实世界的正常扰动定义了可能出现威胁的五大安全属性，分别是光照、空间变换、模糊、噪声和天气变化；然后，针对不同的模型任务场景，制定不同的评估标准，如非定向分类错误、目标类别错误分类到评估者设定的类别等标准；最后，对于不同安全属性扰动带来的威胁，该框架采用了图像领域中广为接受的最小扰动的 Lp 范数来量化威胁严重性以及模型鲁棒性。</li>
+<li><strong>腾讯</strong>，腾讯公司针对 AI 落地过程中面临的各类安全问题进行了细致的划分，具体分为 AI 软硬件安全、AI 算法安全、AI 模型安全、AI 数据安全和数据隐私等部分。AI 软硬件安全主要是考虑到部署 AI 模型的软件和硬件层面可能存在的安全漏洞，如内存溢出、摄像头劫持等问题；AI 算法安全主要考虑深度学习存在对抗样本的问题，容易出现错误的预测结果；AI 模型本身的安全则涉及到模型窃取，这一问题目前实现方式比较多，常见的方法是直接物理接触下载模型并逆向获取模型参数，以及通过多次查询来拟合“影子”模型实现等价窃取；此外，模型的训练数据也会被污染，开源的预训练模型可能被恶意埋入后门，这些问题都被划分为 AI 模型的数据安全问题；当然，模型训练使用的数据集也会涉及用户的隐私，因此攻击者可能也会通过查询获取用户隐私。为了缓解这些问题，腾讯安全团队借助 AI 能力，针对性地构建了多种攻击检测技术。</li>
+<li><strong>华为</strong>，华为公司同样对 AI 安全问题展开了深入的研究，其将 AI 系统面临的挑战分为 5 个部分，包括软硬件的安全、数据完整性、模型保密性、模型鲁棒性和数据隐私。其中，软硬件的安全涉及应用、模型、平台、芯片和编码中可能存在的漏洞或后门；数据完整性主要涉及各类数据投毒攻击；模型保密性则主要涉及到模型的窃取问题；模型鲁棒性考虑训练模型时的样本往往覆盖性不足，使得模型鲁棒性不强，同时模型面对恶意对抗样本攻击时，无法给出正确的判断结果等问题；数据隐私考虑在用户提供训练数据的场景下，攻击者能够通过反复查询训练好的模型获得用户的隐私信息。 为了应对这些挑战，华为主要考虑三个层次的防御手段：攻防安全、模型安全和架构安全。其中，攻防安全考虑针对已知的攻击手段，设计针对性的防御机制来保护 AI 系统，经典的防御技术包括对抗训练、知识蒸馏、对抗样本检测、训练数据过滤、集成模型、模型剪枝等。而针对模型本身存在的安全问题，考虑包括模型可检测性、可验证性和可解释性等技术，以提升模型应对未知攻击的能力。在业务中实际使用 AI 模型，需要结合业务自身特点，分析判断 AI 模型架构安全，综合利用隔离、检测、熔断和冗余等安全机制设计 AI 安全架构与部署方案，增强业务产品、业务流程与业务功能的健壮性。</li>
+<li><strong>RealAI</strong>，RealAI 是一家专注于从根本上增强 AI 的可靠性、可信性以及安全性的创业公司。该公司通过黑盒和白盒方式，对目标模型进行对抗样本攻击，并通过检测器和去噪器等方式构建模型的 AI 防火墙；此外，它们也考虑了模型窃取和后门检测等问题。</li>
+</ul>
+<h2 id="多维对抗与AI-SDL"><a href="#多维对抗与AI-SDL" class="headerlink" title="多维对抗与AI SDL"></a>多维对抗与AI SDL</h2><p>AI 系统的防御与攻击者的攻击是一个不断演变的攻防对抗过程，攻击者会不断更新攻击手法来突破 AI 系统的防御。例如以黑产为代表的攻击者，会不断探测 AI 系统的漏洞，开发新的攻击工具，降低攻击成本来突破 AI 系统，获得高额的经济收益。</p>
+<p>在实际场景中，我们需要从多个视角切入来应对与攻击者之间日益焦灼的对抗战役。一个非常有效的战略就是知己知彼，知彼就是从防御的视角切入，时时刻刻跟踪对手的动向，部署策略模型对各类攻击行为进行监测，对于这类技术我们称之为多维对抗技术，知己就是从评测的视角切入，实时检测 AI 系统中的漏洞并进行修补，降低攻击面、风险面，对于这类技术我们称之为 AI 模型安全开发生命周期（AI SDL），这也是借鉴应用安全领域的 SDL 理念。</p>
+<ul>
+<li><strong>多维对抗</strong>，多维对抗的核心理念就是把攻防链路进行切面（深度数据化），再充分融合机器智能和专家智能，结合威胁情报，化被动防御为主动攻防，在对手还在尝试阶段就能够发现异常行为，再通过置信度排序和团伙挖掘等进行审理定性、处置，是一个系统化的防御体系。</li>
+<li><strong>AI SDL</strong>，AI SDL 是从安全角度指导 AI 模型开发过程的管理模式。AI SDL 是一个安全保证的过程，它在 AI模型开发的所有阶段都引入了安全和隐私的原则。具体来说，AI 模型的生命周期包括模型设计、数据与预训练模型准备、模型开发与训练、模型验证与测试、模型部署与上线、模型性能监控、模型下线这七个流程。AI SDL 通过安全指导这 7个模型开发流程，保障模型在其全生命周期中的安全性。</li>
+</ul>
+<h1 id="总结和展望"><a href="#总结和展望" class="headerlink" title="总结和展望"></a>总结和展望</h1><p>人工智能技术已广泛应用于生物核身、自动驾驶、语音识别、自然语言处理和博弈等多种场景。人工智能技术在加速传统行业的智能化变革的同时，其安全性问题也越来越被人们关注。聚焦于人工智能安全问题，本白皮书从 AI 模型、AI 数据和 AI 承载系统三个角度系统地总结了人工智能技术所面临的威胁，介绍了面对这些威胁的防御手段，并面向工业界给出了安全的人工智能应用一站式解决方案。 </p>
+<p>人工智能应用在实际部署时面临对抗攻击、数据投毒攻击和模型窃取攻击等多种潜在威胁。在实际应用场景中，多种 AI 攻击同时存在，我们很难用单一的防御技术来应对现实场景中复杂的威胁。此外，在人工智能的攻防对抗过程中防御是更困难的一方，攻击者可以不断更新攻击技术来突破目前最有效的防御系统，然而新的防御系统却需要考虑现存的所有攻击技术。为了应对实际场景中复杂的威胁以及不断变化的威胁手段，AI 安全研究人员更应从人工智能模型的可解释性等理论角度出发，从根本上解决人工智能模型所面临的安全问题。一方面，研究人员在模型的训练阶段可以通过选取或设计本身具有可解释性的模型，为模型增强泛化能力和鲁棒性；另一方面，研究人员要尝试解释模型的工作原理，即在不改变模型本身的情况下探索模型是如何根据输入样本进行决策的。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" rel="tag"># 人工智能</a>
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AI%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">AI技术与安全模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AI%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">AI安全模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AI%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E5%88%86%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text">AI安全问题分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AI%E6%8A%80%E6%9C%AF%E9%9D%A2%E4%B8%B4%E7%9A%84%E4%B8%89%E5%A4%A7%E5%A8%81%E8%83%81"><span class="nav-number">3.</span> <span class="nav-text">AI技术面临的三大威胁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AI-%E6%A8%A1%E5%9E%8B%E5%AE%89%E5%85%A8%E6%80%A7%E9%97%AE%E9%A2%98"><span class="nav-number">3.1.</span> <span class="nav-text">AI 模型安全性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%AE%8C%E6%95%B4%E6%80%A7%E5%A8%81%E8%83%81"><span class="nav-number">3.1.1.</span> <span class="nav-text">模型训练完整性威胁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E5%AE%8C%E6%95%B4%E6%80%A7%E5%A8%81%E8%83%81"><span class="nav-number">3.1.2.</span> <span class="nav-text">测试完整性威胁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E9%B2%81%E6%A3%92%E6%80%A7%E7%BC%BA%E4%B9%8F"><span class="nav-number">3.1.3.</span> <span class="nav-text">模型鲁棒性缺乏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%81%8F%E8%A7%81%E5%A8%81%E8%83%81"><span class="nav-number">3.1.4.</span> <span class="nav-text">模型偏见威胁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AI-%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%9A%90%E7%A7%81%E5%AE%89%E5%85%A8%E6%80%A7%E9%97%AE%E9%A2%98"><span class="nav-number">3.2.</span> <span class="nav-text">AI 数据与隐私安全性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%A8%A1%E5%9E%8B%E8%BE%93%E5%87%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E6%B3%84%E9%9C%B2"><span class="nav-number">3.2.1.</span> <span class="nav-text">基于模型输出的数据泄露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%A2%AF%E5%BA%A6%E6%9B%B4%E6%96%B0%E7%9A%84%E6%95%B0%E6%8D%AE%E6%B3%84%E9%9C%B2"><span class="nav-number">3.2.2.</span> <span class="nav-text">基于梯度更新的数据泄露</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AI-%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E6%80%A7%E9%97%AE%E9%A2%98"><span class="nav-number">3.3.</span> <span class="nav-text">AI 系统安全性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="nav-number">3.3.1.</span> <span class="nav-text">硬件设备安全问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="nav-number">3.3.2.</span> <span class="nav-text">系统与软件安全问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AI%E5%B8%B8%E7%94%A8%E9%98%B2%E5%BE%A1%E6%8A%80%E6%9C%AF"><span class="nav-number">4.</span> <span class="nav-text">AI常用防御技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AI-%E6%A8%A1%E5%9E%8B%E8%87%AA%E8%BA%AB%E5%AE%89%E5%85%A8%E6%80%A7%E5%A2%9E%E5%BC%BA"><span class="nav-number">4.1.</span> <span class="nav-text">AI 模型自身安全性增强</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE%E7%9A%84%E9%98%B2%E5%BE%A1"><span class="nav-number">4.1.1.</span> <span class="nav-text">面向训练数据的防御</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%98%B2%E5%BE%A1"><span class="nav-number">4.1.2.</span> <span class="nav-text">面向模型的防御</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%8A%97%E8%AE%AD%E7%BB%83"><span class="nav-number">4.1.3.</span> <span class="nav-text">对抗训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E9%A2%84%E5%A4%84%E7%90%86%E9%98%B2%E5%BE%A1"><span class="nav-number">4.1.4.</span> <span class="nav-text">输入预处理防御</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BC%82%E6%80%A7%E9%98%B2%E5%BE%A1%E7%AE%97%E6%B3%95"><span class="nav-number">4.1.5.</span> <span class="nav-text">特异性防御算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%B2%81%E6%A3%92%E6%80%A7%E5%A2%9E%E5%BC%BA"><span class="nav-number">4.1.6.</span> <span class="nav-text">鲁棒性增强</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7%E5%A2%9E%E5%BC%BA"><span class="nav-number">4.1.7.</span> <span class="nav-text">可解释性增强</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AI-%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E4%B8%8E%E9%9A%90%E7%A7%81%E6%B3%84%E6%BC%8F%E9%98%B2%E5%BE%A1"><span class="nav-number">4.2.</span> <span class="nav-text">AI 数据安全与隐私泄漏防御</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%BB%93%E6%9E%84%E9%98%B2%E5%BE%A1"><span class="nav-number">4.2.1.</span> <span class="nav-text">模型结构防御</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%B7%B7%E6%B7%86%E9%98%B2%E5%BE%A1"><span class="nav-number">4.2.2.</span> <span class="nav-text">信息混淆防御</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%8E%A7%E5%88%B6%E9%98%B2%E5%BE%A1"><span class="nav-number">4.2.3.</span> <span class="nav-text">查询控制防御</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AI-%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E6%80%A7%E9%98%B2%E5%BE%A1"><span class="nav-number">4.3.</span> <span class="nav-text">AI 系统安全性防御</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E5%AE%89%E5%85%A8%E4%BF%9D%E6%8A%A4"><span class="nav-number">4.3.1.</span> <span class="nav-text">硬件安全保护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E4%BF%9D%E6%8A%A4"><span class="nav-number">4.3.2.</span> <span class="nav-text">系统软件安全保护</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AI-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E4%B8%80%E7%AB%99%E5%BC%8F%E5%AE%89%E5%85%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">5.</span> <span class="nav-text">AI 应用系统一站式安全解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AC%E5%8F%B8%E4%BB%8B%E7%BB%8D"><span class="nav-number">5.1.</span> <span class="nav-text">公司介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E5%AF%B9%E6%8A%97%E4%B8%8EAI-SDL"><span class="nav-number">5.2.</span> <span class="nav-text">多维对抗与AI SDL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%E5%92%8C%E5%B1%95%E6%9C%9B"><span class="nav-number">6.</span> <span class="nav-text">总结和展望</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Joey</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joey</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
