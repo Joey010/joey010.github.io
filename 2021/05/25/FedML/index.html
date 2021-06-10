@@ -22,24 +22,24 @@
 
   <meta name="description" content="USC联合MIT、Stanford、MSU、UIUC以及腾讯、微众银行等众多高校与公司联合发布了FedML联邦学习开源框架，它是一个开放的研究库和基准，可促进联邦学习算法的开发和公平的性能比较。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="联邦学习的研究库和基准：FedML">
+<meta property="og:title" content="联邦学习的研究库和基准">
 <meta property="og:url" content="http://wangpengju.word/2021/05/25/FedML/index.html">
-<meta property="og:site_name" content="知行合一">
+<meta property="og:site_name" content="AI">
 <meta property="og:description" content="USC联合MIT、Stanford、MSU、UIUC以及腾讯、微众银行等众多高校与公司联合发布了FedML联邦学习开源框架，它是一个开放的研究库和基准，可促进联邦学习算法的开发和公平的性能比较。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-01-Comparison.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-02-FLTopology.png">
+<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-02-FL-Topology.png">
 <meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-03-Datasets.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-04-ComputingParadiagms.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-05-ProgrammingDesign.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-06-ApplicationExample.png">
+<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-04-Computing-Paradiagms.png">
+<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-05-Programming-Design.png">
+<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-06-Application-Example.png">
 <meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-07-Table2.png">
 <meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-08-Table3.png">
 <meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-09-Table4.png">
 <meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-10-Overview.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-11-TestAccuracy.png">
+<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-11-Test-Accuracy.png">
 <meta property="article:published_time" content="2021-05-25T11:01:16.000Z">
-<meta property="article:modified_time" content="2021-06-03T08:20:58.087Z">
+<meta property="article:modified_time" content="2021-06-09T06:58:03.309Z">
 <meta property="article:author" content="Joey">
 <meta property="article:tag" content="联邦学习">
 <meta name="twitter:card" content="summary">
@@ -58,7 +58,7 @@
   };
 </script>
 
-  <title>联邦学习的研究库和基准：FedML | 知行合一</title>
+  <title>联邦学习的研究库和基准 | AI</title>
   
 
 
@@ -109,7 +109,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">知行合一</h1>
+      <h1 class="site-title">AI</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -130,14 +130,19 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
         <li class="menu-item menu-item-tags">
 
     <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
-        <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-categories">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -182,11 +187,11 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="知行合一">
+      <meta itemprop="name" content="AI">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          联邦学习的研究库和基准：FedML
+          联邦学习的研究库和基准
         </h1>
 
         <div class="post-meta">
@@ -197,6 +202,15 @@
               <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2021-05-25 19:01:16" itemprop="dateCreated datePublished" datetime="2021-05-25T19:01:16+08:00">2021-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">联邦学习</span></a>
+                </span>
             </span>
 
           
@@ -234,7 +248,7 @@
 <ol start="2">
 <li>联邦学习种类的多样性导致现有FL库不能完全支持。</li>
 </ol>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-02-FLTopology.png" alt="FL Topology"></p>
+<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-02-FL-Topology.png" alt="FL Topology"></p>
 <p>在网络拓扑方面，目前已经提出了基于数据中心的FL、去中心化FL、分层FL、纵向FL、Split-FL 以及Meta-FL；在信息交换方面，除了交换梯度和模型以外，最新的FL算法还建议交换信息，例如半监督FL中的伪标签和基于神经体系结构搜索FL中的体系结构参数；在训练过程方面,FL-GAN和联邦迁移学习等训练过程与FedAvg算法明显不同。</p>
 <ol start="3">
 <li>缺乏标准的FL算法实现。</li>
@@ -249,15 +263,15 @@
 <ol>
 <li>FedML支持三种计算范例：移动设备训练、分布式计算和单机模拟。</li>
 </ol>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-04-ComputingParadiagms.png" alt="FedML supports Three computing paradiagms"></p>
+<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-04-Computing-Paradiagms.png" alt="FedML supports Three computing paradiagms"></p>
 <ol start="2">
 <li>FedML支持各种FL配置，FedML引入了worker-oriented的编程接口，用于灵活的拓扑配置和工作程序之间的任意信息交换。用户可以在FL设置中为worker附加任何行为（例如训练、聚合、攻击和防御等），自定义其他交换信息，并控制worker之间的信息流，从而使FedML更加灵活和通用，可用于更高级的算法开发。</li>
 </ol>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-05-ProgrammingDesign.png" alt="A worker-oriented programming design pattern of FedML"></p>
+<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-05-Programming-Design.png" alt="A worker-oriented programming design pattern of FedML"></p>
 <ol start="3">
 <li>标准化的FL算法实现，FedML提供了许多现有的FL算法的标准化实现。这些实现不仅可以帮助用户熟悉API，还可以用作与新开发的FL算法进行比较的基准。</li>
 </ol>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-06-ApplicationExample.png" alt="Application example"></p>
+<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-06-Application-Example.png" alt="Application example"></p>
 <ol start="4">
 <li>FedML为非独立同分布数据集提供了标准化基准设置，为了促进公平和可靠的比较，FedML在合理的设置下提供了有意义的指标和基线结果，确保所有算法都在具有合理调整的超参数的非独立同分布的数据集上进行评估。</li>
 </ol>
@@ -279,7 +293,7 @@
 </li>
 </ol>
 <h1 id="实验展示"><a href="#实验展示" class="headerlink" title="实验展示"></a>实验展示</h1><p>为了演示FedML的功能，我们在真实的分布式计算环境中进行了实验。我们使用标准的FedAvg算法训练了大型CNN架构（ResNet和MobileNet），下图显示了训练期间的相应曲线。一个普遍的现象是对非I.I.D.数据性能低于I.I.D.数据。</p>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-11-TestAccuracy.png" alt="Test accuracy"></p>
+<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-11-Test-Accuracy.png" alt="Test accuracy"></p>
 <p>FedML提供benchmark的实验结果作为新开发的算法和系统的参考。为了确保实时更新，使用 Weight和Bias维护基准实验结果，该在线平台可帮助管理和可视化实验结果。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>FedML是面向研究的联邦学习库和基准。它为研究人员和工程师提供了端到端工具包，以便于开发和评估自己的FL算法，并与现有算法进行合理比较。在这项工作中，描述了系统设计、新的编程接口、应用示例、基准、数据集和一些实验结果。FedML的参考实现、基准和数据集旨在促进Baseline的再现以及对新开发算法的公平比较。</p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] He C, Li S, So J, et al. Fedml: A research library and benchmark for federated machine learning[J]. arXiv preprint arXiv:2007.13518, 2020.</p>
@@ -299,7 +313,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://wangpengju.word/2021/05/25/FedML/" title="联邦学习的研究库和基准：FedML">http://wangpengju.word/2021/05/25/FedML/</a>
+    <a href="http://wangpengju.word/2021/05/25/FedML/" title="联邦学习的研究库和基准">http://wangpengju.word/2021/05/25/FedML/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -395,9 +409,15 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">

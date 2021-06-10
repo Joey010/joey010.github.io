@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangpengju.word","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="《人工智能发展报告》这份报告旨在展现人工智能发展所经历的重大科研进展、成果产出、技术影响力，并且从人工智能技术发展的角度，阐述人工智能取得的重要成果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能发展现状及趋势">
+<meta property="og:url" content="http://wangpengju.word/2021/06/09/AI-Development-Trend/index.html">
+<meta property="og:site_name" content="AI">
+<meta property="og:description" content="《人工智能发展报告》这份报告旨在展现人工智能发展所经历的重大科研进展、成果产出、技术影响力，并且从人工智能技术发展的角度，阐述人工智能取得的重要成果。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/AI-Development-Trend-01-AI-Stage.png">
+<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/AI-Development-Trend-02-AI-History.png">
+<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/AI-Development-Trend-03-AI-Field.png">
+<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/AI-Development-Trend-04-AI-Field.png">
+<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/AI-Development-Trend-05-AI-Hotspot.png">
+<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/AI-Development-Trend-06-Hype-Cycle-2020.png">
+<meta property="article:published_time" content="2021-06-09T10:26:29.000Z">
+<meta property="article:modified_time" content="2021-06-10T13:04:25.792Z">
+<meta property="article:author" content="Joey">
+<meta property="article:tag" content="人工智能">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qtqx4nipc.bkt.clouddn.com/AI-Development-Trend-01-AI-Stage.png">
+
+<link rel="canonical" href="http://wangpengju.word/2021/06/09/AI-Development-Trend/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>人工智能发展现状及趋势 | AI</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">AI</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangpengju.word/2021/06/09/AI-Development-Trend/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Joey">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          人工智能发展现状及趋势
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-09 18:26:29" itemprop="dateCreated datePublished" datetime="2021-06-09T18:26:29+08:00">2021-06-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">《人工智能发展报告》这份报告旨在展现人工智能发展所经历的重大科研进展、成果产出、技术影响力，并且从人工智能技术发展的角度，阐述人工智能取得的重要成果。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>《人工智能发展报告》旨在展现人工智能发展所经历的重大科研进展、成果产出、技术影响力，并且从人工智能技术发展的角度，阐述人工智能取得的重要成果，尤其大数据时代人工智能最具代表性的内容；介绍了全球主要国家人工智能战略支持政策和人才储备，尤其是各子领域高层次人才现状；最后深入探讨了人工智能的未来发展蓝图，理论、技术和应用方面的重大变化与挑战，以及如何赋能其他产业发展等议题。</p>
+<h1 id="人工智能的发展阶段"><a href="#人工智能的发展阶段" class="headerlink" title="人工智能的发展阶段"></a>人工智能的发展阶段</h1><p>关于人工智能的发展阶段，存在多种划分方法，其中一种划分方法是计算、感知、认知三个阶段，即人工智能从技术阶段上主要分为计算智能、感知智能和认知智能三个层次。此外，图灵奖获得者Manuel Blum夫妇在2020世界人工智能大会上提出了意识智能，核心的理念就是构造一个新型的可用数学建模、可计算的机器认知/意识模型。<br>如图1所示，计算智能，即快速计算和记忆存储能力；感知智能，即视觉、听觉、触觉等感知能力；认知智能就是具有推理、可解释性的能力，也是人工智能的高级阶段。</p>
+<p><img src="http://qtqx4nipc.bkt.clouddn.com/AI-Development-Trend-01-AI-Stage.png" alt="AI Stage"></p>
+<center>图1. 人工智能的发展阶段</center>
+
+
+<h1 id="人工智能的发展脉络"><a href="#人工智能的发展脉络" class="headerlink" title="人工智能的发展脉络"></a>人工智能的发展脉络</h1><p>人工智能涉及计算机技术、控制论、信息论、语言学、神经生理学、心理学、数学、哲学等多学科领域的交叉与融合，其概念与内涵随着相关学科和应用领域的发展而持续变换。</p>
+<p>图2展示了人工智能自诞生以来在60多年的发展历史中所取得的一些标志性成果和技术，例如自然语言处理、人机对话技术、机器人系统、深度学习等。</p>
+<p><img src="http://qtqx4nipc.bkt.clouddn.com/AI-Development-Trend-02-AI-History.png" alt="AI History"></p>
+<center>图2. 人工智能的发展脉络</center>
+
+
+<h1 id="人工智能的研究领域"><a href="#人工智能的研究领域" class="headerlink" title="人工智能的研究领域"></a>人工智能的研究领域</h1><p>人工智能既是计算机科学的一个分支，又是一个融合了多种学科的交叉学科，加上其最近几年的高速发展，内涵和外延也在不断的变化，新兴的子领域不断涌现。 </p>
+<p>该报告综合参考了计算机领域较为公认的权威性机构关于学科的分类方法，这些机构包括：国际计算机学会（Association for Computing Machinery, ACM），中国计算机学会（China Computer Federation, CCF）和电气与电子工程师协会（Institute of Electrical and Electronics Engineers, IEEE），同时又融合了国内外专家学者的建议，选择了自然语言处理、芯片技术、机器学习、信息检索与推荐、人机交互、知识工程、语音识别、计算机视觉、机器人、数据挖掘、经典 AI、数据库、计算机图形、多媒体、可视化、安全与隐私、计算机网络、计算机系统、计算理论和物联网作为20个人工智能子领域进行研究，如图3所示。</p>
+<p><img src="http://qtqx4nipc.bkt.clouddn.com/AI-Development-Trend-03-AI-Field.png" alt="AI Field"></p>
+<center>图3. 人工智能各子领域导图</center>
+
+<p>根据技术的独立性特征，人工智能20个子领域可以进一步分为以机器学习、自然语言处理、知识工程、信息检索与推荐、计算机视觉、语音识别和机器人等为核心的七个人工智能关键技术，以及人机交互、数据挖掘、芯片技术、经典AI、数据库、计算机图形、多媒体、可视化、安全与隐私、计算机网络、计算机系统、计算理论和物联网等十三个人工智能外延技术，如图4所示。</p>
+<p><img src="http://qtqx4nipc.bkt.clouddn.com/AI-Development-Trend-04-AI-Field.png" alt="AI Field"></p>
+<center>图4. 人工智能20个子领域的核心和外延划分</center>
+
+
+<h1 id="人工智能的研究热点"><a href="#人工智能的研究热点" class="headerlink" title="人工智能的研究热点"></a>人工智能的研究热点</h1><p>人工智能研究热点旨在通过AMiner全球学术数据库遴选过去十年人工智能领域最热门的研究技术主题。遴选方法为参考人工智能领域在国际顶级期刊和会议过去十年所发表论文，从标题和摘要信息中抽取论文技术研究主题和所在AI子领域，并按照该技术主题研究的论文发表数量、论文引用量和该技术主题进入每个会议高引论文前十名的次数（即该技术的领域引用特征）进行综合评测排序，通过AI算法计算出该技术的AMiner影响力指数，以此获得人工智能领域研究热点的总榜单，评选出过去十年“十大AI研究热点”，如图5所示。</p>
+<p><img src="http://qtqx4nipc.bkt.clouddn.com/AI-Development-Trend-05-AI-Hotspot.png" alt="AI Hotspot"></p>
+<center>图5. AMiner评选出的过去十年十大AI研究热点</center>
+
+<p>这十大研究热点分别为深度神经网络、特征抽取、图像分类、目标检测、语义分割、表示学习、生成对抗网络、语义网络、协同过滤和机器翻译。具体如下：</p>
+<ul>
+<li><p>深度神经网络<br>深度神经网络（Deep Neural Networks，DNN）是深度学习的基础，又被称为深度前馈网络（DFN）、多层感知机（Multi-Layer Perceptron，MLP），可以理解为是有很多隐藏层的神经网络。深度神经网络可以在没有大量标记数据的情况下解决问题。代表算法包括卷积神经网络、循环神经网络、递归神经网络等。深度神经网络的被引用量保持了较长时间的稳定平稳增长。深度卷积神经网络技术则于2014年开始获得更多引用。目前，深度神经网络（DNN）是许多人工智能应用的基础，从自动驾驶汽车、癌症检测到大型游戏等。在这许多领域中，DNN实现了超越人类的准确率。</p>
+</li>
+<li><p>特征抽取<br>特征抽取（Feature Extraction）是信息检索与推荐中的一项技术，专指使用计算机提取一组测量值中属于特征性的信息的方法及过程，并将所抽取出的有效实体信息进行结构化存储。目前特征抽取已引入机器学习、深度学习、神经网络技术，其中，神经网络技术已应用于图片特征抽取。针对某个特定图片，通过卷积神经网络对图片进行特征抽取得到表征图片的特征，利用度量学习方法如欧式距离对图片特征进行计算，对图片距离进行排序，得到初级检索结果，再根据图片数据的上下文信息和流形结构对图像检索结果进行重排序，从而提高图像检索准确率，得到最终的检索结果。</p>
+</li>
+<li><p>图像分类<br>图像分类（Image Classification）是指计算机利用算法从给定的分类集合中给某个特定图像正确分配一个标签的任务，其目标是将不同的图像划分到不同的类别中，并实现最小的分类误差，较多应用于计算机视觉、信息检索与推荐领域。2012年，加拿大认知心理学家和计算机科学家Geoffrey Everest Hinton的博士生Alex Krizhevsky在ILSVRC将深度学习用于大规模图像分类中并提出了CNN模型，其计算效果大幅度超越传统方法，获得了ILSVRC2012冠军，该模型被称作AlexNet。从AlexNet之后，涌现了一系列CNN模型，不断地在ImageNet上刷新成绩。目前的深度学习模型的识别能力已经超过了人眼。</p>
+</li>
+<li><p>目标检测<br>目标检测（Object Detection）作为计算机视觉和图像处理领域一个分支，是指利用图像处理与模式识别等领域的理论和方法，检测出数字图像和视频中存在的特定类别的目标对象，确定这些目标对象的语义类别，并标定出目标对象在图像中的位置。目标检测是目标识别的前提，具有很大发展潜力。目标检测已经有许多有用有趣的实际应用，如人脸识别、行人检测、视觉搜索引擎、航拍图像分析等。目前流行的目标检测算法有One-stage和Two-stage两种：（1）Two-stage指的是检测算法需要分两步完成，即先获取候选区域、再进行分类与回归，比如R-CNN系列算法，准确度较高但是速度慢；（2）One-stage检测不需要单独寻找候选区域，典型的有SSD/YOLO，其速度快但是准确性较低。目标检测在过去10年内出现了由基于区域的卷积神经网络（R-CNN）、YOLO分治网络、SSD等多种方法，这些新技术在速度和精确度上都较之前有了很大提升。目前，计算机进行对目标检测的能力在很多方面已经超越人类。例如，AI通过深度学习进行目标检测和识别，可以更准确地检测乳腺癌。</p>
+</li>
+<li><p>语义分割<br>语义分割（Semantic Segmentation）是让计算机根据图像的语义进行分割，判断图像中哪些像素属于哪个目标。近年来，许多语义分割问题正在采用深度学习技术来解决，最常见的是卷积神经网络，在精度上大大超过了其他方法以及效率。目前语义分割的应用领域主要有：地理信息系统、无人车驾驶、医疗影像分析和机器人等领域。</p>
+</li>
+<li><p>表示学习<br>表示学习（Representation Learning），是指将原始数据转换成能够被机器学习的一种深度学习技术。它能够从复杂的原始数据中提炼有效特征，剔除无效或者冗余信息，形成可用的数据表示。在表示学习中，词嵌入（Word Embedding）是自然语言处理的重要突破之一，它可以将词表示为实数域向量，进而为机器学习和深度学习提供模型训练的基础。近些年很多专家和学者利用词嵌入的表示学习原理进行相关领域的研究，主要的表示方法包括Word2Vec、One-hot、词共现等。这些方法已经成为当下人工智能技术应用的基础，为机器学习提供了高效的表示能力。</p>
+</li>
+<li><p>生成对抗网络<br>生成对抗网络（Generative Adversarial Networks，GAN）是用于无监督学习的机器学习模型，由Ian Goodfellow等人在2014年提出。GAN由神经网络构成判别器和生成器构成，通过一种互相竞争的机制组成的一种学习框架。GAN功能强大，学习性质是无监督的，也不需要标记数据。传统的生成模型最早要追溯到80年代的RBM，以及后来逐渐使用深度神经网络进行包装的AutoEncoder，然后就是现在的生成模型GAN。GAN具有大量的实际用例，如图像生成、艺术品生成、音乐生成和视频生成。此外，它还可以提高图像质量，并且完成图像风格化或着色、面部生成以及其他更多有趣的任务。</p>
+</li>
+<li><p>语义网络<br>语义网络（Semantic Network）是一种以网络格式表达人类知识构造的形式，是人工智能程序运用的表示方式之一，相关研究主要集中在信息检索与推荐、知识工程领域。语义网络是一种面向语义的结构，它们一般使用一组推理规则，规则是为了正确处理出现在网络中的特种弧而专门设计的。语义网络可以深层次地表示知识，包括实体结构、层次及实体间的因果关系；无推理规律可循；知识表达的自然性可以直接从语言语句强化而来。</p>
+</li>
+<li><p>协同过滤<br>协同过滤（Collaborative Filtering，CF）是推荐系统使用的一种技术，通过收集来自多个用户的偏好、兴趣、评价标准等用户行为数据来过滤信息，并自动预测（过滤）用户兴趣的方法，为用户提供有针对性的推荐及其所需信息。大多数协同过滤系统都应用基于相似度索引的技术。协同过滤是解决信息超载问题的一个有效办法。无论是基于用户-用户的协同过滤，还是项目-项目的协同过滤，都有效地提高了用户信息的使用效率。</p>
+</li>
+<li><p>机器翻译<br>机器翻译（Machine Translation），又称为自动翻译，是利用计算机把一种自然源语言转变为另一种自然目标语言的过程，通常指自然语言之间句子和全文的翻译。它是自然语言处理（Natural Language Processing）的一个分支，与计算语言学（Computational Linguistics）、自然语言理解（Natural Language Understanding）之间存在密不可分的关系。机器翻译是人工智能的终极目标之一，其核心语言理解和语言生成是自然语言处理的两大基本问题。近几年来，随着深度学习技术的发展，神经机器翻译取得了巨大进展，其生成的译文接近自然语句，成为了主流语言学习模型。</p>
+</li>
+</ul>
+<h1 id="人工智能的发展趋势"><a href="#人工智能的发展趋势" class="headerlink" title="人工智能的发展趋势"></a>人工智能的发展趋势</h1><p>人工智能经历几波浪潮之后，在过去十年中基本实现了感知能力，但却无法做到推理、可解释等认知能力，因此在下一波人工智能浪潮兴起时，将主要会去实现具有推理、可解释性、认知的人工智能。2017年，DARPA发起XAI项目，核心思想是从可解释的机器学习系统、人机交互技术以及可解释的心理学理论三个方面，全面开展可解释性AI系统的研究。2018年底，第三代人工智能的理论框架体系正式公开提出，核心思想为：（1）建立可解释、鲁棒性的人工智能理论和方法；（2）发展安全、可靠、可信及可扩展的人工智能技术；（3）推动人工智能创新应用。</p>
+<p>图6为Gartner2020年人工智能技术成熟度曲线图，显示出2020年人工智能技术成熟度曲线共有30项技术出现，其中有17项技术需要2到5年才能达到成熟期，有8项技术需要5到10年才能达到成熟期。出现的这些技术基本处于科技诞生期、期望膨胀期和泡沫低谷期，而稳步攀升期和生产成熟期出现的技术寥寥无几，仅有洞察引擎（Insight Engines）和GPU加速器（GPU Accelerators）。</p>
+<p><img src="http://qtqx4nipc.bkt.clouddn.com/AI-Development-Trend-06-Hype-Cycle-2020.png" alt="AI Hype Cycle"></p>
+<center>图6. 2020年人工智能技术成熟度曲线图</center>
+
+<p>通过对2020年人工智能技术成熟度曲线分析，并结合人工智能的发展现状，报告认为人工智能下一个十年重点发展的方向包括：强化学习、神经形态硬件、知识图谱、智能机器人、可解释性人工智能、数字伦理、自然语言处理等技术处于期望膨胀期，表明人们对AI最大的期待，达到稳定期需要5到10年，是AI未来十年重点发展方向。 </p>
+<ul>
+<li><p>强化学习（Reinforement Learning）<br>强化学习用于描述和解决智能体在与环境的交互过程中通过学习策略以达成回报最大化或实现特定目标的问题。强化学习不受标注数据和先验知识所限制，而是通过接收环境对动作的奖励（反馈）获得学习信息并更新模型参数。由于智能体和环境的交互方式与人类和环境的交互方式类似，强化学习可以认为是一套通用的学习框架，可用来解决通用人工智能的问题。 </p>
+</li>
+<li><p>神经形态硬件（Neuromorphic Hardware）<br>神经形态硬件旨在用与传统硬件完全不同的方式处理信息，通过模仿人脑构造来大幅提高计算机的思维能力与反应能力。采用多进制信号来模拟生物神经元的功能，可将负责数据存储和数据处理的元件整合到同一个互联模块当中。从这一意义上说，这一系统与组成人脑的数十亿计的、相互连接的神经元颇为相仿。神经形态硬件能够大幅提升数据处理能力和机器学习能力，能耗和体积却要小得多，为人工智能的未来发展提供强大的算力支撑。</p>
+</li>
+<li><p>知识图谱（Knowledge Graphics）<br>要实现真正的类人智能，机器还需要掌握大量的常识性知识，以人的思维模式和知识结构来进行语言理解、视觉场景解析和决策分析。知识图谱将互联网的信息表达成更接近人类认知世界的形式，提供了一种更好地组织、管理和理解互联网海量信息的能力，被认为是从感知智能通往认知智能的重要基石。从感知到认知的跨越过程中，构建大规模高质量知识图谱是一个重要环节，当人工智能可以通过更结构化的表示理解人类知识，并进行互联，才有可能让机器真正实现推理、联想等认知功能。清华大学唐杰教授在知识图谱的基础上提出的认知图谱=知识图谱+认知推理+逻辑表达，为人工智能未来十年的发展提供了研究方向。</p>
+</li>
+<li><p>智能机器人（Intelligent Robot）<br>智能机器人需要具备三个基本要素：感觉要素、思考要素和反应要素。感觉要素是利用传感器感受内部和外部信息，如视觉、听觉、触觉等；思考要素是根据感觉要素所得到的信息，思考出采用什么样的动作；反应要素是对外界做出反应性动作。智能机器人的关键技术包括多传感器信息融合、导航与定位、路径规划、智能控制等。由于社会发展的需求和机器人应用行业的扩大，机器人可以具备的智能水平并未达到极限，影响因素包括硬件设施的计算速度不够、传感器的种类不足，以及缺乏机器人的思考行为程 序难以编制等。</p>
+</li>
+<li><p>可解释性人工智能（Explainable AI）<br>虽然深度学习算法在语音识别、计算机视觉、自然语言处理等领域取得令人印象深刻的性能，但是它们在透明度和可解释性方面仍存在局限性。深度学习的不可解释性已经成为计算机领域顶级会议（如NIPS）火药味十足的讨论话题。一些方法尝试将黑盒的神经网络模型和符号推理结合了起来，通过引入逻辑规则增加可解释性。此外，符号化的知识图谱具有形象直观的特性，为弥补神经网络在解释性方面的缺陷提供了可能。利用知识图谱解释深度学习和高层次决策模型，是当前值得研究的科学问题，可以为可解释的AI提供全新视角的机遇。张钹院士指出当前人工智能的最大问题是不可解释和不可理解，并提倡建立具有可解释性的第三代人工智能理论体系。</p>
+</li>
+<li><p>数字伦理（Digital Ethics）<br>作为新一轮科技革命和产业变革的重要驱动力，人工智能已上升为国家战略，人工智能将会在未来几十年对人类社会产生巨大的影响，带来不可逆转的改变。人工智能的发展面临诸多现实的伦理和法律问题，如网络安全、个人隐私、数据权益和公平公正等。为了让人工智能技术更好地服务于经济社会发展和人民美好生活，不仅要发挥好人工智能的“头雁”效应，也要加强人工智能相关法律、伦理、社会问题等方面的研究。数字伦理将是未来智能社会的发展基石，只有建立完善的人工智能伦理规范，处理好机器与人的新关系，我们才能更多地获得人工智能红利，让技术造福人类。</p>
+</li>
+<li><p>自然语言处理（Nature Language Processing）<br>深度学习在自然语言处理取得了巨大突破，它能够高效学习多粒度语言单元间复杂语义关联。但是仅仅依靠深度学习并不能完成对自然语言的深度理解。对自然语言的深度理解需要从字面意义到言外之意的跃迁，这需要引入复杂知识的支持。丰富的语言知识 能够提升模型的可解释性，可覆盖长尾低频语言单位的知识规则能够提升模型的可扩展性，而异质多样的知识与推理体系能够提升模型鲁棒性。因此有必要研究知识指导的自然语言处理技术，揭示自然语言处理和知识产生及表达的机理，建立知识获取与语言处理双向驱动的方法体系，实现真正的语言与知识智能理解。</p>
+</li>
+</ul>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 清华大学人工智能研究院. 人工智能发展报告. 2020.</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Joey
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://wangpengju.word/2021/06/09/AI-Development-Trend/" title="人工智能发展现状及趋势">http://wangpengju.word/2021/06/09/AI-Development-Trend/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" rel="tag"># 人工智能</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/04/AI-Hype-Cycle/" rel="prev" title="人工智能发展史和技术成熟度曲线">
+      <i class="fa fa-chevron-left"></i> 人工智能发展史和技术成熟度曲线
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/10/AI-Life/" rel="next" title="人工智能时代和生命3.0">
+      人工智能时代和生命3.0 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E5%8F%91%E5%B1%95%E9%98%B6%E6%AE%B5"><span class="nav-number">2.</span> <span class="nav-text">人工智能的发展阶段</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E5%8F%91%E5%B1%95%E8%84%89%E7%BB%9C"><span class="nav-number">3.</span> <span class="nav-text">人工智能的发展脉络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E7%A0%94%E7%A9%B6%E9%A2%86%E5%9F%9F"><span class="nav-number">4.</span> <span class="nav-text">人工智能的研究领域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E7%A0%94%E7%A9%B6%E7%83%AD%E7%82%B9"><span class="nav-number">5.</span> <span class="nav-text">人工智能的研究热点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF"><span class="nav-number">6.</span> <span class="nav-text">人工智能的发展趋势</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">7.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Joey</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joey</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

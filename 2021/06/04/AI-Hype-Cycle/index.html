@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangpengju.word","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="几乎每一项新兴且成功的技术，在真正成熟之前，都要经历先抑后扬的过程，并在波折起伏中通过积累和迭代，最终走向真正的稳定和繁荣。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能发展史和技术成熟度曲线">
+<meta property="og:url" content="http://wangpengju.word/2021/06/04/AI-Hype-Cycle/index.html">
+<meta property="og:site_name" content="AI">
+<meta property="og:description" content="几乎每一项新兴且成功的技术，在真正成熟之前，都要经历先抑后扬的过程，并在波折起伏中通过积累和迭代，最终走向真正的稳定和繁荣。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/AI-Hype-Cycle-01-Overview.png">
+<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/AI-Hype-Cycle-02-Components.png">
+<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/AI-Hype-Cycle-03-Emerging-Technologies-2020.png">
+<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/AI-Hype-Cycle-04-AI-History.png">
+<meta property="article:published_time" content="2021-06-04T10:58:16.000Z">
+<meta property="article:modified_time" content="2021-06-10T12:41:19.933Z">
+<meta property="article:author" content="Joey">
+<meta property="article:tag" content="人工智能">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qtqx4nipc.bkt.clouddn.com/AI-Hype-Cycle-01-Overview.png">
+
+<link rel="canonical" href="http://wangpengju.word/2021/06/04/AI-Hype-Cycle/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>人工智能发展史和技术成熟度曲线 | AI</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">AI</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangpengju.word/2021/06/04/AI-Hype-Cycle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Joey">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          人工智能发展史和技术成熟度曲线
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-04 18:58:16" itemprop="dateCreated datePublished" datetime="2021-06-04T18:58:16+08:00">2021-06-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">几乎每一项新兴且成功的技术，在真正成熟之前，都要经历先抑后扬的过程，并在波折起伏中通过积累和迭代，最终走向真正的稳定和繁荣。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>学术界、产业界和投资界在谈到技术高潮与低谷时，经常会引用高德纳咨询公司的技术成熟度曲线。这条曲线显示出，几乎每一项新兴且成功的技术，在真正成熟之前，都要经历先抑后扬的过程，并在波折起伏中通过积累和迭代，最终走向真正的稳定和繁荣。</p>
+<h1 id="技术成熟度曲线"><a href="#技术成熟度曲线" class="headerlink" title="技术成熟度曲线"></a>技术成熟度曲线</h1><p>高德纳咨询公司（Gartner）创立于1979年，是世界最大的IT研究与顾问咨询公司。1995年开始，Gartner推出了技术成熟度曲线（Hype Cycle），来预测各种新科技的成熟演变速度及要达到成熟所需的时间，曲线分成5个阶段：</p>
+<p><img src="http://qtqx4nipc.bkt.clouddn.com/AI-Hype-Cycle-01-Overview.png" alt="Hype Cycle"></p>
+<ul>
+<li><p>科技诞生期（Technology Trigger）<br>在此阶段，一项新技术开始诞生，随着媒体大肆的报道，非理性的渲染，产品知名度快速上升，然而随着这项科技的缺点、问题和瓶颈出现，失败的案例大于成功的案例。</p>
+</li>
+<li><p>期望膨胀期（Peak of Inflated Expectations）<br>早期公众的过分关注演绎出了一系列成功的故事，新技术简直成了救世主，迎来了整个周期的巅峰。当然同时也有众多失败的例子，对于失败，有些公司采取了补救措施，而大部分却无动于衷。</p>
+</li>
+<li><p>泡沫低谷期（Trough of Disillusionment）<br>经历过巅峰之后，这项技术逐渐暴露出各种问题：无法量产、不满足预期等等，公众的关注度下降，一部分投资开始撤离，泡沫开始破裂。</p>
+</li>
+<li><p>稳步攀升期（Slope of Enlightenment）<br>由于技术和应用场景的逐渐成熟和完善，重燃市场的兴趣，产品应用开始普及，在市面上受到主要媒体与业界高度的注意。</p>
+</li>
+<li><p>生产成熟期（Plateau of Productivity）<br>在此阶段，新科技产生的利益与潜力被市场实际接受，实质支援此经营模式的工具、方法论经过数代的演进，进入了非常成熟的阶段。</p>
+</li>
+</ul>
+<p>如曲线所示，一项新技术的研发过程通常是这样的：初创公司接受第一轮风投，开发出第一代产品，虽然不成熟，但足以吸引一批早期接受者：粉丝。在早期阶段，产品的优点被粉丝放大，大众媒体跟风炒作，将该技术推向一个充满泡沫的膨胀期。随着盲目的追捧者激增，跟风研发、生产的初创公司越来越多，产品的不足被无限放大，负面报道开始出现，供过于求的市场竞争中，大批跟风入局的初创公司不是被兼并，就是走向倒闭，只有少数拥有核心竞争力的坚持了过来。跌入低谷后，第二轮、第三轮风投资金注入大浪淘沙后仅存的中坚企业，新一代技术和产品也随之问世，整个技术曲线步入稳步攀升的平台期和成熟期，潜在用户的接受程度也从5%以下逐渐提升到20%到30%，初创企业和风投资本开始迎来高额回报。</p>
+<h1 id="技术成熟度曲线的原理"><a href="#技术成熟度曲线的原理" class="headerlink" title="技术成熟度曲线的原理"></a>技术成熟度曲线的原理</h1><p>技术成熟度曲线其实是两个曲线的叠加：炒作曲线+工程发展曲线。</p>
+<p><img src="http://qtqx4nipc.bkt.clouddn.com/AI-Hype-Cycle-02-Components.png" alt="Components of Hype Cycle"></p>
+<ul>
+<li><p>炒作曲线<br>新事物的诞生之时，肯定最吸人眼球，也是媒体争相报道之时，即“追热点”，会造成短暂的大规模关注的一个高峰。随后，舆论被其他新鲜事所吸引，对这个新事物的关注度迅速降温。</p>
+</li>
+<li><p>工程发展曲线<br>与此同时，以这个新事物为基础的工程技术，才刚刚发展起来。新技术相关的商业体系、供应链、上下游厂商等，也开始逐渐成熟。</p>
+</li>
+</ul>
+<h1 id="技术成熟度曲线的发布"><a href="#技术成熟度曲线的发布" class="headerlink" title="技术成熟度曲线的发布"></a>技术成熟度曲线的发布</h1><p>Gartner每年都会根据年度所有流行技术的发展状况，制作出一张当年各种流行技术在技术成熟度曲线上的发展位置图示，标示出每种前沿技术是处在萌芽期、泡沫期、低谷期还是稳定期，以及每种未达到成熟期的技术还需要几年才会真正成熟起来。技术成熟度曲线更是科技产业界的风向标，研究者或投资者经常根据曲线来判断时代潮流，选择研究方向或投资方向。</p>
+<p>Gartner每年都要在技术成熟度曲线榜单上列举很多种新技术，值得注意的是，该公司评估了超过1,700种新兴技术，筛选出一组（大约30种）在未来五到十年内最具变革性的技术，并进行了简明的介绍。下图是Gartner定义的2020年新兴技术成熟度曲线榜单：</p>
+<p><img src="http://qtqx4nipc.bkt.clouddn.com/AI-Hype-Cycle-03-Emerging-Technologies-2020.png" alt="Emerging Technologies 2020"></p>
+<h1 id="人工智能的发展史"><a href="#人工智能的发展史" class="headerlink" title="人工智能的发展史"></a>人工智能的发展史</h1><p>人工智能在充满未知的探索道路上曲折起伏的发展。截至目前为止，人工智能经历两次高潮和两次低谷，目前处于第三次高潮中。网上流传着一幅有关“人工智能发展技术成熟度曲线”的漫画，如下图所示，形象地展示出人们在此前两次人工智能热潮中，从被人工智能在某些领域的惊艳表现震撼，到逐渐认识到当时的人工智能还有各种局限，以至于产生巨大心理落差的有趣过程。</p>
+<p><img src="http://qtqx4nipc.bkt.clouddn.com/AI-Hype-Cycle-04-AI-History.png" alt="AI History"> </p>
+<p>如何描述人工智能自1956年以来60余年的发展历程，学术界可谓仁者见仁、智者见智，中国科学院院士谭铁牛将人工智能的发展历程划分为以下6个阶段：</p>
+<ul>
+<li><p>一是起步发展期：1956年—20世纪60年代初。人工智能概念提出后，相继取得了一批令人瞩目的研究成果，如机器定理证明、跳棋程序等，掀起人工智能发展的第一个高潮。</p>
+</li>
+<li><p>二是反思发展期：20世纪60年代—70年代初。人工智能发展初期的突破性进展大大提升了人们对人工智能的期望，人们开始尝试更具挑战性的任务，并提出了一些不切实际的研发目标。然而，接二连三的失败和预期目标的落空（例如，无法用机器证明两个连续函数之和还是连续函数、机器翻译闹出笑话等），使人工智能的发展走入低谷。</p>
+</li>
+<li><p>三是应用发展期：20世纪70年代初—80年代中。20世纪70年代出现的专家系统模拟人类专家的知识和经验解决特定领域的问题，实现了人工智能从理论研究走向实际应用、从一般推理策略探讨转向运用专门知识的重大突破。专家系统在医疗、化学、地质等领域取得成功，推动人工智能走入应用发展的新高潮。</p>
+</li>
+<li><p>四是低迷发展期：20世纪80年代中—90年代中。随着人工智能的应用规模不断扩大，专家系统存在的应用领域狭窄、缺乏常识性知识、知识获取困难、推理方法单一、缺乏分布式功能、难以与现有数据库兼容等问题逐渐暴露出来。</p>
+</li>
+<li><p>五是稳步发展期：20世纪90年代中—2010年。由于网络技术特别是互联网技术的发展，加速了人工智能的创新研究，促使人工智能技术进一步走向实用化。1997年国际商业机器公司（简称IBM）深蓝超级计算机战胜了国际象棋世界冠军卡斯帕罗夫，2008年IBM提出“智慧地球”的概念。以上都是这一时期的标志性事件。</p>
+</li>
+<li><p>六是蓬勃发展期：2011年至今。随着大数据、云计算、互联网、物联网等信息技术的发展，泛在感知数据和图形处理器等计算平台推动以深度神经网络为代表的人工智能技术飞速发展，大幅跨越了科学与应用之间的“技术鸿沟”，诸如图像分类、语音识别、知识问答、人机对弈、无人驾驶等人工智能技术实现了从“不能用、不好用”到“可以用”的技术突破，迎来爆发式增长的新高潮。</p>
+</li>
+</ul>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a target="_blank" rel="noopener" href="https://www.gartner.com/en/documents/3887767/understanding-gartner-s-hype-cycle">Understanding Gartner’s Hype Cycles</a></p>
+<p>[2] <a target="_blank" rel="noopener" href="https://www.gartner.com/smarterwithgartner/5-trends-drive-the-gartner-hype-cycle-for-emerging-technologies-2020/">5 Trends Drive the Gartner Hype Cycle for Emerging Technologies, 2020</a></p>
+<p>[3] <a target="_blank" rel="noopener" href="http://www.cas.cn/zjs/201902/t20190218_4679625.shtml">人工智能的历史、现状和未来</a></p>
+<p>[4] 李开复. 人工智能[M]. 文化发展出版社,2017.</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Joey
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://wangpengju.word/2021/06/04/AI-Hype-Cycle/" title="人工智能发展史和技术成熟度曲线">http://wangpengju.word/2021/06/04/AI-Hype-Cycle/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" rel="tag"># 人工智能</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/03/FL-Healthcare/" rel="prev" title="联邦学习在医疗领域的应用">
+      <i class="fa fa-chevron-left"></i> 联邦学习在医疗领域的应用
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/09/AI-Development-Trend/" rel="next" title="人工智能发展现状及趋势">
+      人工智能发展现状及趋势 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%88%90%E7%86%9F%E5%BA%A6%E6%9B%B2%E7%BA%BF"><span class="nav-number">2.</span> <span class="nav-text">技术成熟度曲线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%88%90%E7%86%9F%E5%BA%A6%E6%9B%B2%E7%BA%BF%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">技术成熟度曲线的原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%88%90%E7%86%9F%E5%BA%A6%E6%9B%B2%E7%BA%BF%E7%9A%84%E5%8F%91%E5%B8%83"><span class="nav-number">4.</span> <span class="nav-text">技术成熟度曲线的发布</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E5%8F%91%E5%B1%95%E5%8F%B2"><span class="nav-number">5.</span> <span class="nav-text">人工智能的发展史</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Joey</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joey</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
