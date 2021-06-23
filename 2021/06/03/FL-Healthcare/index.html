@@ -27,17 +27,17 @@
 <meta property="og:site_name" content="AI">
 <meta property="og:description" content="基于大数据的人工智能正在逐渐改变传统的医疗行业，为疾病提供更快速、更准确的诊断和治疗，然而医疗领域目前受到了隐私保护的影响，借助联邦学习可以打破这一困境。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FL-Healthcare-01-FL-Step.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FL-Healthcare-02-FL-Framework.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FL-Healthcare-03-Improving-Communication.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FL-Healthcare-04-Privacy.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FL-Healthcare-05-Recent-Work.png">
+<meta property="og:image" content="http://cdn.wangpengju.xyz/FL-Healthcare-01-FL-Step.png">
+<meta property="og:image" content="http://cdn.wangpengju.xyz/FL-Healthcare-02-FL-Framework.png">
+<meta property="og:image" content="http://cdn.wangpengju.xyz/FL-Healthcare-03-Improving-Communication.png">
+<meta property="og:image" content="http://cdn.wangpengju.xyz/FL-Healthcare-04-Privacy.png">
+<meta property="og:image" content="http://cdn.wangpengju.xyz/FL-Healthcare-05-Recent-Work.png">
 <meta property="article:published_time" content="2021-06-03T04:58:16.000Z">
-<meta property="article:modified_time" content="2021-06-18T04:51:04.213Z">
+<meta property="article:modified_time" content="2021-06-23T09:39:20.221Z">
 <meta property="article:author" content="Joey">
 <meta property="article:tag" content="联邦学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://qtqx4nipc.bkt.clouddn.com/FL-Healthcare-01-FL-Step.png">
+<meta name="twitter:image" content="http://cdn.wangpengju.xyz/FL-Healthcare-01-FL-Step.png">
 
 <link rel="canonical" href="http://wangpengju.word/2021/06/03/FL-Healthcare/">
 
@@ -224,11 +224,11 @@
 <p>医疗数据，诸如电子病历（EHR）、医学影像等，一方面，对精准健康的实现有奠基性的作用，另一方面，这些数据往往分散在各处，因其敏感性而很难被共享。例如：智能手表收集到了个人实时心跳数据，研究者试图使用这些数据，结合电子病历，训练模型以便提前预测中风。但是智能手表厂商和医院的病历记录，都以隐私理由拒绝数据公开。这时如果使用联邦学习，可以确保敏感的病人数据保留在当地机构或个人消费者手中，在联邦机器学习过程中不泄漏给模型训练者。</p>
 <p>除此之外，如果只使用某一特定人群的数据训练，那么模型就可能对特定人群造成歧视，例如文献[4]发现，基于电子病例，预测那些病人会重复住院的算法，由于训练数据大多来自白人，其对有色人种的预测将产生偏见。显然，减少这种带有偏见算法风险的一个方法是能够从更能用代表全球人口的比例的电子病例数据集进行训练，但这种数据超越了单一的医院或机构，因此需要将数据进行汇总。</p>
 <h1 id="联邦学习的定义"><a href="#联邦学习的定义" class="headerlink" title="联邦学习的定义"></a>联邦学习的定义</h1><p>机器学习的训练过程，就是去通过调整模型中的参数，以求最小化指定的损失函数。不论是简单的线性回归和逻辑回归，还是复杂的深度学习，其学习过程都涉及到参数的调整。既然联邦学习要求数据分散在各地，那么模型中参数的更新，也将是分散在各个终端上的。如下图所示：</p>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FL-Healthcare-01-FL-Step.png" alt="FL Steps"></p>
+<p><img src="http://cdn.wangpengju.xyz/FL-Healthcare-01-FL-Step.png" alt="FL Steps"></p>
 <center>图1. 联邦学习的四个步骤丨图片来源：维基百科</center>
 
 <p>联邦学习的定义是：假设有k个客户端，数据存储在其中（客户端可以是手机、可穿戴设备或者临床机构的数据仓库等）。用Dk表示与客户端k相关的数据分布，并用nk表示从客户端获得的样品数量，N=∑nk是总样本量，F(w)是损失函数，w是待优化的模型参数矩阵。联邦学习归结为如何使用某种算法，来让下图的损失函数最小化的问题：</p>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FL-Healthcare-02-FL-Framework.png" alt="FL Framework"></p>
+<p><img src="http://cdn.wangpengju.xyz/FL-Healthcare-02-FL-Framework.png" alt="FL Framework"></p>
 <center>图2. 联邦学习框架。该模型以分布式方式进行训练：各客户端定期与中央服务器通信，以便在更新后的全局参数上进行优化；中央服务器汇总更新，并将更新的全局模型的参数发送回来</center>
 
 
@@ -241,11 +241,11 @@
 <p>针对应对统计上的挑战，传统的FedAvg算法，在数据分布极端时是无效的，在小样本数据集时，可以采用Agnostic Federated Learning[2]，即<strong>先拿到分布的客户端数据的数据分布，再针对任意可能分布的数据优化模型参数</strong>。另一种算法是 q-Fair Federated Learning[3]，该方法<strong>对于性能较差的客户端训练的模型参数分配更高的权重，从而降低网络中训练模型的参数方差，从而应对数据分布的异质性。</strong></p>
 <p><strong>除了具体的算法，让各个客户端随机抽取一部分数据共享，也是解决统计挑战的一个常用方法</strong>。而多任务学习（Multi-task learning，MTL）通过将待优化的参数分为多个阶段，根据训练数据预测未曾见过的数据集，可以让各个客户端利用已提取的模式，来帮助为其它客户端学习得到更为准确的分类器，并捕捉不同客户端数据集之间的关系，也适合解决联邦学习面对的统计上的挑战。</p>
 <p>而为了减少客户端与中央节点间通信的信息量，有三种方式，一是减少客户端的数目，二是减少每次更新通信的比特数，三是减少训练过程所需的更新次数。为此，对应的四种方法如下图所示：</p>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FL-Healthcare-03-Improving-Communication.png" alt="Communication Efficient"></p>
+<p><img src="http://cdn.wangpengju.xyz/FL-Healthcare-03-Improving-Communication.png" alt="Communication Efficient"></p>
 <center>图3. 四种应对联邦学习通信上挑战的方法：模型压缩、客户端筛选、减少更新、P2P学习（不引入中心节点）</center>
 
 <p>而为了避免恶意的客户端从模型训练过程中学习推测出其他客户端的数据、保护模型构建者及数据提供方的隐私，有两种常用的理论框架，一是差分隐私（Differential Privacy），该方法通过对数据增加噪音，同时保证添加噪音后的数据和源数据能得出无差别的模型更新，从而提升计算的隐私性；二是安全多方计算（Secure Multi-party Computation），通过将模型训练的所需数据分为N份，再将不同客户端的数据汇总，从而保证没有任何计算节点能够得到完整的训练数据集。</p>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FL-Healthcare-04-Privacy.png" alt="Privacy-preserving Schemes"></p>
+<p><img src="http://cdn.wangpengju.xyz/FL-Healthcare-04-Privacy.png" alt="Privacy-preserving Schemes"></p>
 <center>图4. 安全多方计算和差分隐私</center>
 
 
@@ -259,7 +259,7 @@
 </li>
 </ul>
 <p>医疗领域更多的应用在于基于电子病例，预测健康风险，从而为临床医生提供更多关于早期治疗患者的风险的评估：例如患者是否会产生抗药性、药物副反应预测、孕妇是否会早产、住院病人是否会死亡等。<strong>这类应用场景中，用到的模型既包括传统的支持向量机和主成分分析，也包含基于深度学习的多层感知机和变分自编码器。</strong></p>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FL-Healthcare-05-Recent-Work.png" alt="Summary of Recent Work"></p>
+<p><img src="http://cdn.wangpengju.xyz/FL-Healthcare-05-Recent-Work.png" alt="Summary of Recent Work"></p>
 <center>表1. 联邦学习在医疗领域的应用</center>
 
 

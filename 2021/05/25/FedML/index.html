@@ -27,23 +27,23 @@
 <meta property="og:site_name" content="AI">
 <meta property="og:description" content="USC联合MIT、Stanford、MSU、UIUC以及腾讯、微众银行等众多高校与公司联合发布了FedML联邦学习开源框架，它是一个开放的研究库和基准，可促进联邦学习算法的开发和公平的性能比较。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-01-Comparison.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-02-FL-Topology.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-03-Datasets.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-04-Computing-Paradiagms.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-05-Programming-Design.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-06-Application-Example.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-07-Table2.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-08-Table3.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-09-Table4.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-10-Overview.png">
-<meta property="og:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-11-Test-Accuracy.png">
+<meta property="og:image" content="http://cdn.wangpengju.xyz/FedML-01-Comparison.png">
+<meta property="og:image" content="http://cdn.wangpengju.xyz/FedML-02-FL-Topology.png">
+<meta property="og:image" content="http://cdn.wangpengju.xyz/FedML-03-Datasets.png">
+<meta property="og:image" content="http://cdn.wangpengju.xyz/FedML-04-Computing-Paradiagms.png">
+<meta property="og:image" content="http://cdn.wangpengju.xyz/FedML-05-Programming-Design.png">
+<meta property="og:image" content="http://cdn.wangpengju.xyz/FedML-06-Application-Example.png">
+<meta property="og:image" content="http://cdn.wangpengju.xyz/FedML-07-Table2.png">
+<meta property="og:image" content="http://cdn.wangpengju.xyz/FedML-08-Table3.png">
+<meta property="og:image" content="http://cdn.wangpengju.xyz/FedML-09-Table4.png">
+<meta property="og:image" content="http://cdn.wangpengju.xyz/FedML-10-Overview.png">
+<meta property="og:image" content="http://cdn.wangpengju.xyz/FedML-11-Test-Accuracy.png">
 <meta property="article:published_time" content="2021-05-25T11:01:16.000Z">
-<meta property="article:modified_time" content="2021-06-09T06:58:03.309Z">
+<meta property="article:modified_time" content="2021-06-23T09:39:16.651Z">
 <meta property="article:author" content="Joey">
 <meta property="article:tag" content="联邦学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://qtqx4nipc.bkt.clouddn.com/FedML-01-Comparison.png">
+<meta name="twitter:image" content="http://cdn.wangpengju.xyz/FedML-01-Comparison.png">
 
 <link rel="canonical" href="http://wangpengju.word/2021/05/25/FedML/">
 
@@ -243,12 +243,12 @@
 <ol>
 <li>缺乏对多种FL计算范例的支持。</li>
 </ol>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-01-Comparison.png" alt="Comparison between FedML and existing federated learning libraries and benchmarks"></p>
+<p><img src="http://cdn.wangpengju.xyz/FedML-01-Comparison.png" alt="Comparison between FedML and existing federated learning libraries and benchmarks"></p>
 <p>PyTorch、TensorFlow、MXNet中TensorFlow-Federated（TFF），PySyft和LEAF仅支持具有中心结构的算法，如FedAvg或FedProx算法，不适用于需要交换复杂辅助信息和自定义训练程序的算法。行业发布了面向生产的库，例如FATE 和PaddleFL，但业界主导的产品通常具有繁琐的系统设计、不灵活的API和复杂的环境设置，这对于在分布式系统开发中没有足够专业知识的算法研究人员来说是一个沉重的学习负担。</p>
 <ol start="2">
 <li>联邦学习种类的多样性导致现有FL库不能完全支持。</li>
 </ol>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-02-FL-Topology.png" alt="FL Topology"></p>
+<p><img src="http://cdn.wangpengju.xyz/FedML-02-FL-Topology.png" alt="FL Topology"></p>
 <p>在网络拓扑方面，目前已经提出了基于数据中心的FL、去中心化FL、分层FL、纵向FL、Split-FL 以及Meta-FL；在信息交换方面，除了交换梯度和模型以外，最新的FL算法还建议交换信息，例如半监督FL中的伪标签和基于神经体系结构搜索FL中的体系结构参数；在训练过程方面,FL-GAN和联邦迁移学习等训练过程与FedAvg算法明显不同。</p>
 <ol start="3">
 <li>缺乏标准的FL算法实现。</li>
@@ -258,27 +258,27 @@
 <li>缺乏标准的FL-Benchmark。</li>
 </ol>
 <p>本文总结了过去两年的顶会中使用的数据集合模型，这些已发表文章的实验设置非常不一致，包括数据集的非I.I.D.设置、用于训练的模型以及每一轮训练涉及的device数量。这些设置的任何差异都可能影响实验结果。</p>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-03-Datasets.png" alt="Various datasets and models used in latest publications"></p>
+<p><img src="http://cdn.wangpengju.xyz/FedML-03-Datasets.png" alt="Various datasets and models used in latest publications"></p>
 <p>为了解决上述问题并促进FL研究的创新，本文介绍了FedML。</p>
 <ol>
 <li>FedML支持三种计算范例：移动设备训练、分布式计算和单机模拟。</li>
 </ol>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-04-Computing-Paradiagms.png" alt="FedML supports Three computing paradiagms"></p>
+<p><img src="http://cdn.wangpengju.xyz/FedML-04-Computing-Paradiagms.png" alt="FedML supports Three computing paradiagms"></p>
 <ol start="2">
 <li>FedML支持各种FL配置，FedML引入了worker-oriented的编程接口，用于灵活的拓扑配置和工作程序之间的任意信息交换。用户可以在FL设置中为worker附加任何行为（例如训练、聚合、攻击和防御等），自定义其他交换信息，并控制worker之间的信息流，从而使FedML更加灵活和通用，可用于更高级的算法开发。</li>
 </ol>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-05-Programming-Design.png" alt="A worker-oriented programming design pattern of FedML"></p>
+<p><img src="http://cdn.wangpengju.xyz/FedML-05-Programming-Design.png" alt="A worker-oriented programming design pattern of FedML"></p>
 <ol start="3">
 <li>标准化的FL算法实现，FedML提供了许多现有的FL算法的标准化实现。这些实现不仅可以帮助用户熟悉API，还可以用作与新开发的FL算法进行比较的基准。</li>
 </ol>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-06-Application-Example.png" alt="Application example"></p>
+<p><img src="http://cdn.wangpengju.xyz/FedML-06-Application-Example.png" alt="Application example"></p>
 <ol start="4">
 <li>FedML为非独立同分布数据集提供了标准化基准设置，为了促进公平和可靠的比较，FedML在合理的设置下提供了有意义的指标和基线结果，确保所有算法都在具有合理调整的超参数的非独立同分布的数据集上进行评估。</li>
 </ol>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-07-Table2.png" alt="Table 2"></p>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-08-Table3.png" alt="Table 3"></p>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-09-Table4.png" alt="Table 4"></p>
-<h1 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h1><p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-10-Overview.png" alt="Overview of FedML library"></p>
+<p><img src="http://cdn.wangpengju.xyz/FedML-07-Table2.png" alt="Table 2"></p>
+<p><img src="http://cdn.wangpengju.xyz/FedML-08-Table3.png" alt="Table 3"></p>
+<p><img src="http://cdn.wangpengju.xyz/FedML-09-Table4.png" alt="Table 4"></p>
+<h1 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h1><p><img src="http://cdn.wangpengju.xyz/FedML-10-Overview.png" alt="Overview of FedML library"></p>
 <ol>
 <li>FedML-Core将通信和模型训练分为两个核心组件。</li>
 </ol>
@@ -293,7 +293,7 @@
 </li>
 </ol>
 <h1 id="实验展示"><a href="#实验展示" class="headerlink" title="实验展示"></a>实验展示</h1><p>为了演示FedML的功能，我们在真实的分布式计算环境中进行了实验。我们使用标准的FedAvg算法训练了大型CNN架构（ResNet和MobileNet），下图显示了训练期间的相应曲线。一个普遍的现象是对非I.I.D.数据性能低于I.I.D.数据。</p>
-<p><img src="http://qtqx4nipc.bkt.clouddn.com/FedML-11-Test-Accuracy.png" alt="Test accuracy"></p>
+<p><img src="http://cdn.wangpengju.xyz/FedML-11-Test-Accuracy.png" alt="Test accuracy"></p>
 <p>FedML提供benchmark的实验结果作为新开发的算法和系统的参考。为了确保实时更新，使用 Weight和Bias维护基准实验结果，该在线平台可帮助管理和可视化实验结果。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>FedML是面向研究的联邦学习库和基准。它为研究人员和工程师提供了端到端工具包，以便于开发和评估自己的FL算法，并与现有算法进行合理比较。在这项工作中，描述了系统设计、新的编程接口、应用示例、基准、数据集和一些实验结果。FedML的参考实现、基准和数据集旨在促进Baseline的再现以及对新开发算法的公平比较。</p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] He C, Li S, So J, et al. Fedml: A research library and benchmark for federated machine learning[J]. arXiv preprint arXiv:2007.13518, 2020.</p>
