@@ -23,21 +23,21 @@
   <meta name="description" content="人工智能推动社会经济各个领域从数字化、信息化向智能化发展的同时，也面临着严重的安全性威胁。面对人工智能安全性威胁，学术界和工业界对人工智能安全技术进行了前瞻性研究与布局。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="人工智能安全白皮书">
-<meta property="og:url" content="http://wangpengju.world/2021/06/03/AI-Security-White-Paper/index.html">
+<meta property="og:url" content="http://wangpengju.world/2021/07/03/AI-Security-White-Paper/index.html">
 <meta property="og:site_name" content="AI">
 <meta property="og:description" content="人工智能推动社会经济各个领域从数字化、信息化向智能化发展的同时，也面临着严重的安全性威胁。面对人工智能安全性威胁，学术界和工业界对人工智能安全技术进行了前瞻性研究与布局。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://cdn.wangpengju.xyz/AI-Security-White-Paper-All.png">
-<meta property="og:image" content="http://cdn.wangpengju.xyz/AI-Security-White-Paper-Defense.png">
-<meta property="article:published_time" content="2021-06-03T10:51:16.000Z">
-<meta property="article:modified_time" content="2022-05-12T13:07:17.921Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Joey010/BlogImage/main/2021/AI-Security-White-Paper-All.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Joey010/BlogImage/main/2021/AI-Security-White-Paper-Defense.png">
+<meta property="article:published_time" content="2021-07-03T10:51:16.000Z">
+<meta property="article:modified_time" content="2022-10-17T02:58:39.950Z">
 <meta property="article:author" content="Joey">
 <meta property="article:tag" content="人工智能">
-<meta property="article:tag" content="网络安全">
+<meta property="article:tag" content="数据安全">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://cdn.wangpengju.xyz/AI-Security-White-Paper-All.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Joey010/BlogImage/main/2021/AI-Security-White-Paper-All.png">
 
-<link rel="canonical" href="http://wangpengju.world/2021/06/03/AI-Security-White-Paper/">
+<link rel="canonical" href="http://wangpengju.world/2021/07/03/AI-Security-White-Paper/">
 
 
 <script id="page-configurations">
@@ -170,7 +170,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wangpengju.world/2021/06/03/AI-Security-White-Paper/">
+    <link itemprop="mainEntityOfPage" href="http://wangpengju.world/2021/07/03/AI-Security-White-Paper/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -193,7 +193,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-06-03 18:51:16" itemprop="dateCreated datePublished" datetime="2021-06-03T18:51:16+08:00">2021-06-03</time>
+              <time title="创建时间：2021-07-03 18:51:16" itemprop="dateCreated datePublished" datetime="2021-07-03T18:51:16+08:00">2021-07-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -221,7 +221,7 @@
 <p>人工智能推动社会经济各个领域从数字化、信息化向智能化发展的同时，也面临着严重的安全性威胁。面对人工智能安全性威胁，学术界和工业界 “抓住机遇，迎难而上”，对人工智能安全技术进行了前瞻性研究与布局。研究发现，这些安全性威胁极大程度上破坏了人工智能技术良性发展的生态。</p>
 <p>为了应对 AI 技术的安全与隐私泄露威胁，学术界与工业界深入分析攻击原理，并根据不同的攻击原理提出一系列对应的防御技术。这些防御技术覆盖了数据收集、模型训练、模型测试以及系统部署等 AI 应用的生命周期，充分考虑了每个阶段可能引发的安全与隐私泄露威胁，详细分析了现有攻击方法的原理、攻击实施的过程以及产生的影响，并最终提出对应的防御技术。</p>
 <p>在白皮书中，我们聚焦于 AI 技术中模型、数据与承载系统的安全问题。首先详细介绍 AI 模型、AI 数据与 AI 承载系统面临的安全威胁，然后逐一介绍针对这些威胁的防御技术，最后提出 AI 应用的一站式安全解决方案。下图详细描述了 AI 技术面临的安全威胁与挑战、AI 安全常用防御技术以及 AI 应用系统安全解决方案之间的关系。</p>
-<p><img src="http://cdn.wangpengju.xyz/AI-Security-White-Paper-All.png" alt="白皮书整体框架"></p>
+<p><img src="https://raw.githubusercontent.com/Joey010/BlogImage/main/2021/AI-Security-White-Paper-All.png" alt="白皮书整体框架"></p>
 <h1 id="AI技术与安全模型"><a href="#AI技术与安全模型" class="headerlink" title="AI技术与安全模型"></a>AI技术与安全模型</h1><p>人工智能是一种通过预先设计好的理论模型模拟人类感知、学习和决策过程的技术。完整的 AI 技术涉及到 AI 模型、训练模型的数据以及运行模型的计算机系统，AI 技术在应用过程中依赖于模型、数据以及承载系统的共同作用。</p>
 <ul>
 <li><strong>AI 模型，</strong>模型是 AI 技术的核心，用于实现 AI 技术的预测、识别等功能，也是 AI 技术不同于其它计算机技术的地方。AI 模型具有数据驱动、自主学习的特点，负责实现机器学习理论和对应算法，能够自动分析输入数据的规律和特征，根据训练反馈自主优化模型参数，最终实现预测输入样本的功能。</li>
@@ -291,7 +291,7 @@
 <p>例如机器学习框架掩盖了 AI 技术实现的底层复杂结构，机器学习框架是建立在众多的基础库和组件之上的，例如 Tensorflow、Caffe、PyTorch 等框架需要依赖 Numpy、libopencv、librosa 等数十个第三方动态库或 Python 模块。这些组件之间存在着复杂的依赖关系。框架中任意一个依赖组件存在的安全漏洞，都会威胁到整个框架以及其所支撑的应用系统。</p>
 <p>研究表明在这些深度学习框架及其依赖库中存在的软件漏洞几乎包含了所有常见的类型，如堆溢出、释放对象后引用、内存访问越界、整数溢出、除零异常等漏洞，这些潜在的危害会导致深度学习应用受到拒绝服务、控制流劫持、数据篡改等恶意攻击的影响。</p>
 <h1 id="AI常用防御技术"><a href="#AI常用防御技术" class="headerlink" title="AI常用防御技术"></a>AI常用防御技术</h1><p>本章节将逐一介绍应对上述 AI 模型、AI 数据以及 AI 承载系统威胁的防御方法，并根据这些防御方法的特点进行相应的分类，总结不同防御方法的主要思想和针对的攻击场景，使得对 AI 安全中的防御技术有初步而全面的了解。</p>
-<p><img src="http://cdn.wangpengju.xyz/AI-Security-White-Paper-Defense.png" alt="人工智能防御技术"></p>
+<p><img src="https://raw.githubusercontent.com/Joey010/BlogImage/main/2021/AI-Security-White-Paper-Defense.png" alt="人工智能防御技术"></p>
 <h2 id="AI-模型自身安全性增强"><a href="#AI-模型自身安全性增强" class="headerlink" title="AI 模型自身安全性增强"></a>AI 模型自身安全性增强</h2><p>AI 模型自身在训练与测试阶段遇到的安全威胁，包括投毒攻击、对抗样本攻击和鲁棒性缺乏威胁。为了应对这些威胁，学术界与工业界已经提出了许多有效的防御方法。这些防御方法从模型自身性质出发，针对性地增强了模型自身在真实场景下的鲁棒性。</p>
 <h3 id="面向训练数据的防御"><a href="#面向训练数据的防御" class="headerlink" title="面向训练数据的防御"></a>面向训练数据的防御</h3><p>面向训练数据的防御试图保护模型在使用不信任来源的数据训练后，不受到后门攻击的影响。采用的防御方法包括：频谱分析法、激活值聚类法和强扰动输入法等。</p>
 <h3 id="面向模型的防御"><a href="#面向模型的防御" class="headerlink" title="面向模型的防御"></a>面向模型的防御</h3><p>面向模型的防御试图检测模型中是否含有后门，若含有则将后门消除。采用的防御方法包括：网络裁剪法、后门逆向法和模式连通法等。</p>
@@ -350,7 +350,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://wangpengju.world/2021/06/03/AI-Security-White-Paper/" title="人工智能安全白皮书">http://wangpengju.world/2021/06/03/AI-Security-White-Paper/</a>
+    <a href="http://wangpengju.world/2021/07/03/AI-Security-White-Paper/" title="人工智能安全白皮书">http://wangpengju.world/2021/07/03/AI-Security-White-Paper/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -362,7 +362,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" rel="tag"># 人工智能</a>
-              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag"># 网络安全</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" rel="tag"># 数据安全</a>
           </div>
 
         
@@ -371,12 +371,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/06/02/AI-Security-Overview/" rel="prev" title="人工智能安全概述">
+    <a href="/2021/07/02/AI-Security-Overview/" rel="prev" title="人工智能安全概述">
       <i class="fa fa-chevron-left"></i> 人工智能安全概述
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/06/04/AI-Hype-Cycle/" rel="next" title="人工智能发展史和技术成熟度曲线">
-      人工智能发展史和技术成熟度曲线 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/07/15/AI-Trustworthy-White-Paper/" rel="next" title="可信人工智能白皮书">
+      可信人工智能白皮书 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -450,7 +450,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

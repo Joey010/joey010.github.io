@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangpengju.world","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="人工智能在带来巨大机遇的同时，也蕴含着风险和挑战。发展可信人工智能正在成为全球共识，可信人工智能的研究范畴包含了安全性、可解释、公平性、 隐私保护等多方面内容。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="可信人工智能白皮书">
+<meta property="og:url" content="http://wangpengju.world/2021/07/15/AI-Trustworthy-White-Paper/index.html">
+<meta property="og:site_name" content="AI">
+<meta property="og:description" content="人工智能在带来巨大机遇的同时，也蕴含着风险和挑战。发展可信人工智能正在成为全球共识，可信人工智能的研究范畴包含了安全性、可解释、公平性、 隐私保护等多方面内容。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Joey010/BlogImage/main/2021/AI-Trustworthy-01-Framework.png">
+<meta property="article:published_time" content="2021-07-15T07:51:16.000Z">
+<meta property="article:modified_time" content="2022-10-17T03:17:57.213Z">
+<meta property="article:author" content="Joey">
+<meta property="article:tag" content="人工智能">
+<meta property="article:tag" content="数据安全">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Joey010/BlogImage/main/2021/AI-Trustworthy-01-Framework.png">
+
+<link rel="canonical" href="http://wangpengju.world/2021/07/15/AI-Trustworthy-White-Paper/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>可信人工智能白皮书 | AI</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">AI</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wangpengju.world/2021/07/15/AI-Trustworthy-White-Paper/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Joey">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          可信人工智能白皮书
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-15 15:51:16" itemprop="dateCreated datePublished" datetime="2021-07-15T15:51:16+08:00">2021-07-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">人工智能在带来巨大机遇的同时，也蕴含着风险和挑战。发展可信人工智能正在成为全球共识，可信人工智能的研究范畴包含了安全性、可解释、公平性、 隐私保护等多方面内容。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h1><p>发展可信人工智能正在成为全球共识，人工智能的稳定性、可解释性、公平性等都是各方关注的核心问题。本白皮书从如何落实全球人工智能治理共识的角度出发，聚焦于可信人工智能技术、产业和行业实践等层面，分析了实现可控可靠、透明可释、隐私保护、明确责任及多元包容的可信人工智能路径，并对可信人工智能的未来发展提出了建议。</p>
+<h1 id="2-可信人工智能发展背景"><a href="#2-可信人工智能发展背景" class="headerlink" title="2. 可信人工智能发展背景"></a>2. 可信人工智能发展背景</h1><p><strong>人工智能在带来巨大机遇的同时，也蕴含着风险和挑战</strong>。习近平总书记高度重视人工智能治理工作，强调要“确保人工智能安全、可靠、可控”，倡议推动落实二十国集团人工智能原则，引领全球人工智能健康发展。从学术研究角度，<strong>可信人工智能的研究范畴包含了安全性、可解释、公平性、 隐私保护等多方面内容</strong>。</p>
+<h2 id="2-1-人工智能技术风险引发信任危机"><a href="#2-1-人工智能技术风险引发信任危机" class="headerlink" title="2.1. 人工智能技术风险引发信任危机"></a>2.1. 人工智能技术风险引发信任危机</h2><p>人工智能应用的广度和深度不断拓展，正在成为信息基础设施的重要组成。但在此过程中，人工智能也不断暴露出一些风险隐患，主要体现在以下几个方面：</p>
+<ul>
+<li><strong>算法安全导致的应用风险</strong>。以深度学习为核心的人工智能技术存在脆弱和易受攻击的缺陷，使得人工智能系统的可靠性难以得到足够的信任。</li>
+<li><strong>黑箱模型导致算法不透明</strong>。深度学习具备高度复杂性和不确定性，从而容易引发不确定性风险。由于人们无法直观地理解决策背后的原因，人工智能与传统行业的进一步融合受到阻碍。</li>
+<li><strong>数据滥用导致隐私泄露风险</strong>。生物识别信息的频繁使用使得个人隐私数据泄露的可能性增大，数据一旦丢失会造成极大的安全风险。如ZAO通过用户协议条款违规收集人脸数据，加重了人们对隐私数据滥用可能造成刷脸支付和身份认证相关安全风险的担忧。</li>
+<li><strong>数据歧视导致智能决策偏见</strong>。人工智能算法产生的结果会受到训练数据的影响，因此，如果训练数据中存在偏见歧视，算法会受到歧视数据的影响，并进一步固化数据中存在的偏见歧视，导致依托人工智能算法生成的智能决策形成偏见。</li>
+<li><strong>系统决策复杂导致责任事故主体难以界定</strong>。人工智能的系统的自动化决策受众多因素影响，使得责任主体难以界定。对于自动驾驶、机器人等应用安全事故频发，到底是由所有者还是软件研发者担责，仍需进一步探讨。</li>
+</ul>
+<h2 id="2-2-全球各界高度重视可信人工智能"><a href="#2-2-全球各界高度重视可信人工智能" class="headerlink" title="2.2. 全球各界高度重视可信人工智能"></a>2.2. 全球各界高度重视可信人工智能</h2><p>面对人工智能引发的全球信任焦虑，发展可信人工智能已经成为全球共识。</p>
+<ul>
+<li>学术界首先推开了可信人工智能的大门。</li>
+<li>政府把增强用户信任、发展可信人工智能，放在其人工智能伦理和治理的核心位置。</li>
+<li>标准化组织布局可信人工智能标准。</li>
+<li>企业积极探索实践可信人工智能。</li>
+</ul>
+<h2 id="2-3-可信人工智能需要系统方法指引"><a href="#2-3-可信人工智能需要系统方法指引" class="headerlink" title="2.3. 可信人工智能需要系统方法指引"></a>2.3. 可信人工智能需要系统方法指引</h2><p>人工智能立法进程不断加快，但具体细则仍需进一步明确；同时产业界探索可信人工智能也逐步迈入深水区。总体上看，针对可信人工智能的实践仍处于相对分散的状态，缺少一套体系化的方法论，以实现全面贯彻相关治理要求，体系化落实相关操作的实践性指引。</p>
+<h1 id="3-可信人工智能框架"><a href="#3-可信人工智能框架" class="headerlink" title="3. 可信人工智能框架"></a>3. 可信人工智能框架</h1><p>本白皮书在全面梳理人工智能伦理约束、规范立法及优秀实践的基础上，提出了可信人工智能框架，如下图所示。</p>
+<ul>
+<li><strong>可信特征层面</strong>。通过对全球范围内已经发布的84份政策文件按照词频进行梳理，可以看到当前人工智能治理原则已经收敛在透明性、安全性、公平性、可问责、隐私保护等五个方面。最后总结提出<strong>可靠可控、透明可释、数据保护、明确责任、多元包容等五项可信特征要素</strong>，用以指引实践可信人工智能时所需具备的操作能力。</li>
+<li><strong>可信支撑技术层面</strong>，围绕着可靠可控、透明可释、数据保护、明确责任和多元包容等可信特征的要求，<strong>以理论研究和技术创新为核心抓手，从而弥补当前技术的不足</strong>。例如研究可解释的新一代人工智能算法、具备隐私保护能力的隐私计算技术等，这需要学术界和工业界积极的探索。</li>
+<li><strong>企业可信实践层面</strong>，人工智能在社会上的广泛应用依赖于企业等主体将技术商品化，因此企业在可信人工智能方面的实践是可信方法论中的关键一环。应该意识到没有完美的技术，关键在于如何正确使用技术：<strong>一方面需要培育可信文化和建设可信管理制度等；另一方面需要在人工智能系统研发和使用的整个生命周期中贯彻可信特征的要求，从产品源头确保“可信”品质</strong>。</li>
+<li><strong>行业可信实践层面</strong>，可信人工智能需要整个行业的参与和实践。主要包括可信人工智能标准体系的建设，可信人工智能评估测试，以及人工智能可信保障等，通过构建保险等社会化方式分担人工智能技术和系统应用带来的风险。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Joey010/BlogImage/main/2021/AI-Trustworthy-01-Framework.png" alt="可信人工智能框架"></p>
+<h1 id="4-可信人工智能支撑技术"><a href="#4-可信人工智能支撑技术" class="headerlink" title="4. 可信人工智能支撑技术"></a>4. 可信人工智能支撑技术</h1><p>随着社会各界对人工智能信任问题的不断关注，安全可信的人工智能技术已成为研究领域的热点。研究的焦点主要是提升人工智能系统稳定性、可解释性、隐私保护、公平性等，这些技术构成了可信人工智能的基础支撑能力。</p>
+<h2 id="4-1-人工智能系统稳定性技术"><a href="#4-1-人工智能系统稳定性技术" class="headerlink" title="4.1. 人工智能系统稳定性技术"></a>4.1. 人工智能系统稳定性技术</h2><p>人工智能系统面临着特有的干扰，这些干扰来自于针对数据和系统的多种攻击方式，包括中毒攻击、对抗攻击、后门攻击等。相比于传统的软件系统，此类干扰对人工智能系统的稳定性提出了更高的要求。目前人工智能的稳定性问题已经引起了持续而广泛的研究。</p>
+<h2 id="4-2-人工智能系统可解释性技术"><a href="#4-2-人工智能系统可解释性技术" class="headerlink" title="4.2. 人工智能系统可解释性技术"></a>4.2. 人工智能系统可解释性技术</h2><p>以深度学习算法为核心的人工智能系统的运作就像是一个黑箱，人们只能看到数据的导入和输出，而不清楚内部的工作原理和判断依据。一方面，人们对训练得到的人工智能模型为何能具有极高的性能尚不清楚；另一方面，人工智能系统在做出决策时具体依赖哪些因素人们也不清楚。增强人工智能系统的可解释性迫在眉睫。</p>
+<h2 id="4-3-人工智能系统隐私保护技术"><a href="#4-3-人工智能系统隐私保护技术" class="headerlink" title="4.3. 人工智能系统隐私保护技术"></a>4.3. 人工智能系统隐私保护技术</h2><p>人工智能系统需要依赖大量数据，然而数据的流转过程以及人工智能模型本身都有可能泄漏敏感隐私数据。然而越来越多的隐私信息承载于数据之中，人们对隐私数据保护的关注更胜以往，部分国家也开始从立法层面制定隐私数据的使用规范。针对隐私保护进行研究能使得人工智能系统符合法律的基本规范和要求，完善可信人工智能的建设。</p>
+<h2 id="4-4-人工智能系统公平性技术"><a href="#4-4-人工智能系统公平性技术" class="headerlink" title="4.4. 人工智能系统公平性技术"></a>4.4. 人工智能系统公平性技术</h2><p>随着人工智能系统的广泛应用，其表现出了不公平决策行为以及对部分群体的歧视。学术界认为，导致这些决策偏见的主要原因如下：受数据采集条件限制，不同群体在数据中所占权重不均衡；在不平衡数据集上训练得到的人工智能模型，可能会为了在整体数据上的平均性能，而牺牲在少量数据上的性能，造成模型决策不公平。公平性技术能够从技术角度对数据进行均衡，从而进一步引导模型给出公平的结果，这对于提高人工智能系统决策公平性具有重要意义。</p>
+<h1 id="5-可信人工智能发展建议"><a href="#5-可信人工智能发展建议" class="headerlink" title="5. 可信人工智能发展建议"></a>5. 可信人工智能发展建议</h1><p>打造可信任的人工智能系统已经成为各界关注的焦点和努力方向。通过实践可信人工智能方法论，有助于提升人工智能的可信水平，让其更好的被社会大众接受。可信人工智能并非一成不变，而是伴随着人工智能技术、伦理、法律的发展，将会不断演进以适应新的发展需要。这也将对所涉及到的各类主体提出新的要求。</p>
+<ul>
+<li><strong>政府层面加快推动我国人工智能监管及立法进程</strong>。构造体系化的人工智能法律监管框架。<strong>一是完善现行法律法规以适应发展需要</strong>，在《网络安全法》、《数据安全法》，以及未来将发布的《个人信息保护法》等基础上，梳理人工智能系统监管过程面临的适用问题，不断完善法律法规。<strong>二是推进新立法工作主动应对新风险</strong>，深入研究人工智能引发的新问题和新态势，及时梳理形成立法建议。<strong>三是创新手段推进法律的落地执行</strong>，探索采用试点、沙箱等监管方式，研发智能化监管工具，不断提高监管的效率和灵活性。此外，要坚持统筹推进人工智能领域国内法治和涉外法治，积极参与多双边区域合作机制，推动国际间人工智能治理规则制定，寻求共识、弥合分歧。</li>
+<li><strong>技术研究层面需全面做好体系化前瞻性布局</strong>。<strong>第一，可信人工智能一体化研究将是未来重要趋势</strong>。当前针对可信人工智能的研究，多是从安全、隐私、公平等单一维度展开。已有研究工作表明，安全性、公平性、可解释性等不同要求之间存在相互协同或相互制约的关系，若仅考虑某一个方面的要求则可能会造成其他要求的冲突。因此需要针对可信人工智能构建一体化研究框架，以保持不同特征要素之间的最优动态平衡。<strong>第二，面向可信通用人工智能的研究需要提前布局</strong>。目前无论是人工智能治理还是可信人工智能的工作，大多是面向弱人工智能技术及应用来进行的，通用人工智能甚至是超级智能尚未引起足够关注，而这些一旦出现将是关乎人类命运的重大事件，需要具有前瞻性的布局，如通过发展超级深度学习、量子机器学习等前沿技术探寻通用人工智能的发展路径。同时，我们也需要在探索强人工智能时开展可信相关的研究工作。</li>
+<li><strong>企业实践层面需匹配业务发展实现敏捷可信</strong>。<strong>企业拓展人工智能技术应用过程中应注重可信人工智能敏捷迭代</strong>。随着人工智能技术与不同行业的广泛融合，其应用深度与日俱增，企业所面临的可信特质要求将不断扩充，这就对企业应具备的可信实践能力提出了更高的要求。一方面应研发可信人工智能检测和监测工具，以匹配业务发展需要，并针对行业应用的独特性进行升级和迭代。另一方面应积极与监管部门对接，主动配合参与数字沙盒、安全港、试点应用、标准合规等监管措施，构建内部和外部相协调的敏捷可信机制。</li>
+<li><strong>行业组织层面需搭建交流合作平台打造可信生态</strong>。<strong>鼓励行业组织围绕可信人工智能领域搭建专门交流平台，号召产业各方共同打造可信人工智能生态</strong>。可信人工智能是一项复杂的系统化工程，需要多方共同参与，应充分发挥行业组织优势，广泛吸纳各方优秀实践经验，编制可信人工智能操作指引；围绕人工智能研发管理、技术保障、产品应用等方面，建立完善可信人工智能标准体系；加快研发人工智能测评和监测能力，运用评估测试、跟踪监测等多种手段，持续推动可信人工智能在产业界落地。</li>
+</ul>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 中国信息通信研究院. 可信人工智能白皮书. 2021.</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Joey
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://wangpengju.world/2021/07/15/AI-Trustworthy-White-Paper/" title="可信人工智能白皮书">http://wangpengju.world/2021/07/15/AI-Trustworthy-White-Paper/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" rel="tag"># 人工智能</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" rel="tag"># 数据安全</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/03/AI-Security-White-Paper/" rel="prev" title="人工智能安全白皮书">
+      <i class="fa fa-chevron-left"></i> 人工智能安全白皮书
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/08/12/Rational-Thought-Human-Nature/" rel="next" title="用理工科思维理解世界之人性">
+      用理工科思维理解世界之人性 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">1. 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%8F%AF%E4%BF%A1%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8F%91%E5%B1%95%E8%83%8C%E6%99%AF"><span class="nav-number">2.</span> <span class="nav-text">2. 可信人工智能发展背景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%8A%80%E6%9C%AF%E9%A3%8E%E9%99%A9%E5%BC%95%E5%8F%91%E4%BF%A1%E4%BB%BB%E5%8D%B1%E6%9C%BA"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. 人工智能技术风险引发信任危机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%85%A8%E7%90%83%E5%90%84%E7%95%8C%E9%AB%98%E5%BA%A6%E9%87%8D%E8%A7%86%E5%8F%AF%E4%BF%A1%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. 全球各界高度重视可信人工智能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%8F%AF%E4%BF%A1%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E9%9C%80%E8%A6%81%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%B3%95%E6%8C%87%E5%BC%95"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. 可信人工智能需要系统方法指引</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E5%8F%AF%E4%BF%A1%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%A1%86%E6%9E%B6"><span class="nav-number">3.</span> <span class="nav-text">3. 可信人工智能框架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E5%8F%AF%E4%BF%A1%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%94%AF%E6%92%91%E6%8A%80%E6%9C%AF"><span class="nav-number">4.</span> <span class="nav-text">4. 可信人工智能支撑技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%B3%BB%E7%BB%9F%E7%A8%B3%E5%AE%9A%E6%80%A7%E6%8A%80%E6%9C%AF"><span class="nav-number">4.1.</span> <span class="nav-text">4.1. 人工智能系统稳定性技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%B3%BB%E7%BB%9F%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7%E6%8A%80%E6%9C%AF"><span class="nav-number">4.2.</span> <span class="nav-text">4.2. 人工智能系统可解释性技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%B3%BB%E7%BB%9F%E9%9A%90%E7%A7%81%E4%BF%9D%E6%8A%A4%E6%8A%80%E6%9C%AF"><span class="nav-number">4.3.</span> <span class="nav-text">4.3. 人工智能系统隐私保护技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%B3%BB%E7%BB%9F%E5%85%AC%E5%B9%B3%E6%80%A7%E6%8A%80%E6%9C%AF"><span class="nav-number">4.4.</span> <span class="nav-text">4.4. 人工智能系统公平性技术</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E5%8F%AF%E4%BF%A1%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE"><span class="nav-number">5.</span> <span class="nav-text">5. 可信人工智能发展建议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Joey</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joey</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
